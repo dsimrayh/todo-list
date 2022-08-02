@@ -11,7 +11,7 @@
 
     <div id="content">
 
-        <header id="header">
+        <header id="header" class="no-user-select">
             <button id="menu-button">☰</button>
             <div id="title">
                 ToDo<span>.zy</span>
@@ -20,7 +20,7 @@
         </header>
 
         <main id="main">
-            <nav class="navbar">
+            <nav class="navbar no-user-select">
                 
                 <!-- WORKING  -->
 
@@ -43,10 +43,37 @@
                 
 
             </nav>
-            <div id="content-area"></div>
+            <div id="content-area">
+                <ul id="task-list">
+                    <li class="task">
+                        Get something done
+                        <div class="task-icons">
+                            <img src="../src/images/important.png" alt="important">
+                            <img src="../src/images/edit.png" alt="edit">
+                            <img src="../src/images/trash.png" alt="trash">
+                        </div>
+                    </li>
+                    <li class="task">
+                        Get something else done
+                        <div class="task-icons">
+                            <img src="../src/images/important.png" alt="important">
+                            <img src="../src/images/edit.png" alt="edit">
+                            <img src="../src/images/trash.png" alt="trash">
+                        </div>
+                    </li>
+                    <li class="task">
+                        Get some other thing done
+                        <div class="task-icons">
+                            <img src="../src/images/important.png" alt="important">
+                            <img src="../src/images/edit.png" alt="edit">
+                            <img src="../src/images/trash.png" alt="trash">
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </main>
 
-        <footer id="footer">
+        <footer id="footer" class="no-user-select">
             <div id="footer-content">
                 <p>Copyright © 2022 dsimrayh</p> 
                 <p style="font-size:22px;">|</p>

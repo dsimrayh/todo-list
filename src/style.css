@@ -4,6 +4,10 @@
     --main-color: rgb(107, 252, 240);
 }
 
+.no-user-select {
+    user-select: none;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +17,7 @@
 body {
     width: 100%;
     height: 100vh;
+    font-family: 'Lato', sans-serif;
 
     overflow: hidden;
 }
@@ -40,7 +45,6 @@ body {
 }
 
 #title {
-    font-family: 'Lato', sans-serif;
     font-size: 60px;
     color:#fff;
 }
@@ -85,7 +89,7 @@ span {
 
 .navbar {
     background-color: rgb(34, 48, 73);
-    padding: 16px 20px;
+    padding: 40px 20px 20px 20px;
     height: 100%;
     width: 300px;
     transition: all 0.3s ease-in-out;
@@ -98,7 +102,6 @@ span {
 
 .nav-header {
     color: #fff;
-    font-family: 'Lato', sans-serif;
     font-weight: 900;
     font-size: 26px;
 }
@@ -115,15 +118,19 @@ hr {
 
 .nav-item {
     color: #fff;
-    font-family: 'Lato', sans-serif;
     font-size: 22px;
     margin: 14px 0px 14px 0px;
     padding: 4px 0px 4px 16px;
     cursor: pointer;
 }
 
+.nav-item.active {
+    background-color: rgba(18, 253, 234, 0.329) !important;
+    border-left: 3px solid var(--main-color);
+}
+
 .nav-item:hover {
-    border-left: 2px solid var(--main-color);
+    border-left: 3px solid var(--main-color);
     background-color: rgb(44, 58, 85);
 }
 
@@ -131,11 +138,33 @@ hr {
     background-color: rgb(44, 58, 85);
     height: 100%;
     width: 100%;
+    padding: 40px 100px;
 
     flex: 1;
 }
 
+#task-list {
+    list-style: none;
+    color: #fff;
+}
 
+.task {
+    border-bottom: 1px solid rgba(204, 204, 204, 0.329);
+    padding: 14px 30px;
+    font-size: 18px;
+    margin: 14px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+img {
+    height: 24px;
+    width: 24px;
+    color: #fff;
+
+}
 
 
 #footer {
@@ -150,7 +179,6 @@ hr {
 
 #footer-content {
     color: #fff;
-    font-family: 'Lato', sans-serif;
     width: 320px;
 
     display: flex;

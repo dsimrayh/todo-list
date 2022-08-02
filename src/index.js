@@ -14,7 +14,7 @@ githubLink.addEventListener('mouseout', () => {
 });
 
 
-// Menu Button
+// Menu Button - show / hide menu functionality
 const menuButton = document.querySelector('#menu-button');
 
 menuButton.addEventListener('click', () => {
@@ -22,3 +22,12 @@ menuButton.addEventListener('click', () => {
     navbar.classList.toggle('navbar-hidden');
     console.log('click');
 });
+
+// Navbar list items - style change on click
+const navbarItems = document.querySelectorAll('.nav-item');
+
+navbarItems.forEach(item => {
+    item.addEventListener('click', () => {
+        item.classList.toggle('active');
+    })
+})
