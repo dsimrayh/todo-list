@@ -8,6 +8,13 @@
     user-select: none;
 }
 
+#menu-button,
+.nav-item,
+.task-button,
+.task-complete-button {
+    cursor: pointer;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -61,7 +68,6 @@ span {
     color: #fff;
     border: none;
     outline: none;
-    cursor: pointer;
 }
 
 #menu-button:hover {
@@ -116,12 +122,21 @@ hr {
     margin-bottom: 40px;
 }
 
+.nav-icon {
+    height: 32px;
+    width: 32px;
+    margin-right: 0.5em;
+}
+
 .nav-item {
     color: #fff;
     font-size: 22px;
     margin: 14px 0px 14px 0px;
     padding: 4px 0px 4px 16px;
-    cursor: pointer;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .nav-item.active {
@@ -133,6 +148,9 @@ hr {
     border-left: 3px solid var(--main-color);
     background-color: rgb(44, 58, 85);
 }
+
+
+
 
 #content-area {
     background-color: rgb(44, 58, 85);
@@ -159,12 +177,47 @@ hr {
     align-items: center;
 }
 
-img {
+
+.task-button-group {
+    margin-left: auto;
+}
+
+.task-button {
     height: 24px;
     width: 24px;
     color: #fff;
-
 }
+
+.task-button:hover {
+    transform: scale(1.2);
+}
+
+.task-button:active {
+    transform: scale(1);
+}
+
+.task-complete-button {
+    height: 28px;
+    width: 28px;
+    background-color: none;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    margin-right: 2em;
+
+    background-image: none;
+}
+
+.task-complete-button.checked{
+    background-image: url("./images/checkmark.png");
+    background-size: 100%;
+    background-origin: border-box;
+
+    background-color: #c8e6c9;
+    border: 2px solid #c8e6c9;
+}
+
+
+
 
 
 #footer {

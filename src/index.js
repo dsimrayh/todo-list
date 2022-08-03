@@ -20,14 +20,26 @@ const menuButton = document.querySelector('#menu-button');
 menuButton.addEventListener('click', () => {
     const navbar = document.querySelector('.navbar');
     navbar.classList.toggle('navbar-hidden');
-    console.log('click');
 });
 
-// Navbar list items - style change on click
+// Navbar list items - highlight on click
 const navbarItems = document.querySelectorAll('.nav-item');
 
-navbarItems.forEach(item => {
-    item.addEventListener('click', () => {
-        item.classList.toggle('active');
+document.addEventListener('click', (e) => {
+    const target = e.target;
+    if(target.className === 'nav-item') {
+        navbarItems.forEach(navbarItem => {
+            navbarItem.classList.remove('active');
+        })
+    }
+    target.classList.add('active');
+})
+
+// Task complete button - green checkmark on click
+const taskCompleteButtons = document.querySelectorAll('.task-complete-button');
+
+taskCompleteButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        button.classList.toggle('checked');
     })
 })
