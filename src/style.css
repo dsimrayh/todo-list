@@ -149,6 +149,38 @@ hr {
     background-color: rgb(44, 58, 85);
 }
 
+.new-project-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 1.5em;
+    padding-left: 4px;
+    color: #fff;
+    transition: transform 0.2s ease-in;
+}
+
+.new-project-button:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in;
+}
+
+.new-project-button img {
+    height: 36px;
+    width: 36px;
+    margin-right: 0.5em;
+    transition: transform 0.2s ease-in;
+}
+
+#project-img:hover{
+    transform: rotate(90deg);
+    transition: transform 0.2s ease-in;
+    cursor: pointer;
+}
+
+#project-img:active{
+    opacity: 0.5;
+}
 
 
 
@@ -189,7 +221,7 @@ hr {
 }
 
 .task-button:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
 
 .task-button:active {
@@ -216,6 +248,39 @@ hr {
     border: 2px solid #c8e6c9;
 }
 
+.new-task-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin-top: 4em;
+    color: #fff;
+    transition: transform 0.2s ease-in;
+}
+
+.new-task-button:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in;
+}
+
+.new-task-button img {
+    height: 50px;
+    width: 50px;
+    margin-bottom: 1em;
+
+    transition: transform 0.2s ease-in;
+}
+
+#task-img:hover{
+    transform: rotate(90deg);
+    transition: transform 0.2s ease-in;
+    cursor: pointer;
+}
+
+#task-img:active{
+    opacity: 0.5;
+}
 
 
 

@@ -20,10 +20,8 @@
         </header>
 
         <main id="main">
-            <nav class="navbar no-user-select">
-                
-                <!-- WORKING  -->
 
+            <nav class="navbar no-user-select">
                 <div class="nav-header">Home</div>
                 <hr>
                 <ul class="nav-list">
@@ -50,15 +48,17 @@
                 <ul class="nav-list">
                     <li class="nav-item">Project 1</li>
                     <li class="nav-item">Project 2</li>
+                    <div class="new-project-button">
+                        <img id="project-img" src="../src/images/add.png" alt="add">
+                        New project
+                    </div>
                 </ul>
-
-                
-
             </nav>
+
             <div id="content-area">
                 <ul id="task-list">
                     <li class="task">
-                        <div id="yagga" class="task-complete-button"></div> 
+                        <div class="task-complete-button"></div> 
                         Get something done
                         <div class="task-button-group">
                             <img class="task-button" src="../src/images/important.png" alt="important">
@@ -84,6 +84,10 @@
                             <img class="task-button" src="../src/images/trash.png" alt="trash">
                         </div>
                     </li>
+                    <div class="new-task-button no-user-select">
+                        <img id="task-img" src="../src/images/add.png" alt="add">
+                        <p>Add task</p>
+                    </div>
                 </ul>
             </div>
         </main>
