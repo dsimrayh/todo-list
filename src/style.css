@@ -38,6 +38,26 @@ body {
     justify-content: space-between;
 }
 
+#mask {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    z-index: 2;
+
+    display: none;
+    place-items: center;
+}
+
+#mask.display-grid {
+    display: grid !important;
+}
+
+.modal {
+    height: 50%;
+    width: 40%;
+    background-color: #ccc;
+}
 
 
 
@@ -157,6 +177,7 @@ hr {
     margin-top: 1.5em;
     padding-left: 4px;
     color: #fff;
+    font-size: 18px;
     transition: transform 0.2s ease-in;
 }
 
@@ -166,8 +187,8 @@ hr {
 }
 
 .new-project-button img {
-    height: 36px;
-    width: 36px;
+    height: 40px;
+    width: 40px;
     margin-right: 0.5em;
     transition: transform 0.2s ease-in;
 }
@@ -196,6 +217,9 @@ hr {
 #task-list {
     list-style: none;
     color: #fff;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .task {
@@ -235,7 +259,6 @@ hr {
     border: 2px solid var(--main-color);
     border-radius: 50%;
     margin-right: 2em;
-
     background-image: none;
 }
 
@@ -243,7 +266,6 @@ hr {
     background-image: url("./images/checkmark.png");
     background-size: 100%;
     background-origin: border-box;
-
     background-color: #c8e6c9;
     border: 2px solid #c8e6c9;
 }
@@ -254,9 +276,14 @@ hr {
     align-items: center;
     flex-direction: column;
 
+    align-self: center;
+
+    width: 150px;
+    height: 150px;
     margin-top: 4em;
     color: #fff;
     transition: transform 0.2s ease-in;
+    z-index: 1;
 }
 
 .new-task-button:hover {
@@ -268,7 +295,6 @@ hr {
     height: 50px;
     width: 50px;
     margin-bottom: 1em;
-
     transition: transform 0.2s ease-in;
 }
 

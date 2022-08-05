@@ -33,7 +33,7 @@ document.addEventListener('click', (e) => {
         })
     }
     target.classList.add('active');
-})
+});
 
 // Task complete button - green checkmark on click
 const taskCompleteButtons = document.querySelectorAll('.task-complete-button');
@@ -42,4 +42,18 @@ taskCompleteButtons.forEach(button => {
     button.addEventListener('click', () => {
         button.classList.toggle('checked');
     })
-})
+});
+
+
+// New task modal
+const addTaskButton = document.querySelector('#task-img');
+const mask = document.querySelector('#mask');
+const modal = document.querySelector('.modal');
+
+addTaskButton.addEventListener('click', () => {
+    mask.classList.add('display-grid');
+});
+
+modal.addEventListener('click', () => {
+    mask.classList.remove('display-grid')
+});
