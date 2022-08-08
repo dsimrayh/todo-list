@@ -43,7 +43,7 @@ body {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
-    z-index: 2;
+    z-index: 3;
 
     display: none;
     place-items: center;
@@ -76,7 +76,7 @@ body {
     color:#fff;
 }
 
-span {
+.zy {
     color: var(--main-color);
 }
 
@@ -169,6 +169,10 @@ hr {
     background-color: rgb(44, 58, 85);
 }
 
+.vertical-menu {
+    margin-left: auto;
+}
+
 .new-project-button {
     display: flex;
     justify-content: center;
@@ -222,17 +226,31 @@ hr {
     flex-direction: column;
 }
 
+.expand {
+    height: 24px;
+    width: 24px;
+    margin-right: 1em;
+    cursor: pointer;
+    transform: rotate(270deg);
+    transition: transform 0.2s ease-in;
+}
+
+.expand.open {
+    transform: rotate(360deg);
+    transition: transform 0.2s ease-in;
+}
+
 .task {
     border-bottom: 1px solid rgba(204, 204, 204, 0.329);
-    padding: 14px 30px;
+    padding: 14px 0px;
     font-size: 18px;
     margin: 14px 0;
+    z-index: 2;
 
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center;    
 }
-
 
 .task-button-group {
     margin-left: auto;
@@ -307,6 +325,26 @@ hr {
 #task-img:active{
     opacity: 0.5;
 }
+
+.description {
+    background-color: #344561;
+    color: #fff;
+    height: 4em;
+    padding: 0.5em;
+    transform: translateY(-30%);
+    margin-bottom: -4em;
+    opacity: 0;
+
+    transition: all 0.21s ease-in;
+}
+
+.description.open {
+    transform: translateY(0);
+    margin-bottom: 0;
+    opacity: 1;
+    transition: all 0.2s ease-in;
+}
+
 
 
 

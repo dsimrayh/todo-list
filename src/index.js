@@ -35,6 +35,22 @@ document.addEventListener('click', (e) => {
     target.classList.add('active');
 });
 
+// Important button / fill on click
+const importantButtons = document.querySelectorAll('.important')
+
+importantButtons.forEach(button => {
+    let selected = false;
+    button.addEventListener('click', () => {
+        selected = !selected;
+        if(selected) {
+            button.src = "../src/images/important-filled.png"
+        } else {
+            button.src = "../src/images/important.png"
+        }
+    })
+        
+});
+
 // Task complete button - green checkmark on click
 const taskCompleteButtons = document.querySelectorAll('.task-complete-button');
 
@@ -56,4 +72,15 @@ addTaskButton.addEventListener('click', () => {
 
 modal.addEventListener('click', () => {
     mask.classList.remove('display-grid')
+});
+
+
+// Open task description
+const expand = document.querySelector('.expand');
+
+expand.addEventListener('click', () => {
+    const description = document.querySelector('.description');
+    description.classList.toggle('open');
+
+    expand.classList.toggle('open');
 });

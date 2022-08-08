@@ -17,7 +17,7 @@
         <header id="header" class="no-user-select">
             <button id="menu-button">☰</button>
             <div id="title">
-                ToDo<span>.zy</span>
+                ToDo<span class="zy">.zy</span>
             </div>
             <button id="dark-mode">Dark</button>
         </header>
@@ -49,8 +49,14 @@
                 <div class="nav-header">Projects</div>
                 <hr>
                 <ul class="nav-list">
-                    <li class="nav-item">Project 1</li>
-                    <li class="nav-item">Project 2</li>
+                    <li class="nav-item">
+                        <span class="project-title">Project 1</span>
+                        <img class="vertical-menu" src="../src/images/vertical-menu.png" alt="menu">
+                    </li>
+                    <li class="nav-item">
+                        <span class="project-title">Project 1</span>
+                        <img class="vertical-menu" src="../src/images/vertical-menu.png" alt="menu">
+                    </li>
                     <div class="new-project-button">
                         <img id="project-img" src="../src/images/add.png" alt="add">
                         New project
@@ -60,33 +66,39 @@
 
             <div id="content-area">
                 <ul id="task-list">
-                    <li class="task">
+                    <li class="task no-user-select">
+                        <img class="expand" src="../src/images/expand.png" alt="expand">
                         <div class="task-complete-button"></div> 
                         Get something done
                         <div class="task-button-group">
-                            <img class="task-button" src="../src/images/important.png" alt="important">
+                            <img class="task-button important" src="../src/images/important.png" alt="important">
                             <img class="task-button" src="../src/images/edit.png" alt="edit">
                             <img class="task-button" src="../src/images/trash.png" alt="trash">
                         </div>
                     </li>
-                    <li class="task">
+                    <div class="description">This is the task description</div>
+                    <li class="task no-user-select">
+                        <img class="expand" src="../src/images/expand.png" alt="expand">
                         <div class="task-complete-button"></div>
                         Get something else done
                         <div class="task-button-group">
-                            <img class="task-button" src="../src/images/important.png" alt="important">
+                            <img class="task-button important" src="../src/images/important.png" alt="important">
                             <img class="task-button" src="../src/images/edit.png" alt="edit">
                             <img class="task-button" src="../src/images/trash.png" alt="trash">
                         </div>
                     </li>
-                    <li class="task">
+                    <div class="description">This is the task description</div>
+                    <li class="task no-user-select">
+                        <img class="expand" src="../src/images/expand.png" alt="expand">
                         <div class="task-complete-button"></div>
                         Get some other thing done
                         <div class="task-button-group">
-                            <img class="task-button" src="../src/images/important.png" alt="important">
+                            <img class="task-button important" src="../src/images/important.png" alt="important">
                             <img class="task-button" src="../src/images/edit.png" alt="edit">
                             <img class="task-button" src="../src/images/trash.png" alt="trash">
                         </div>
                     </li>
+                    <div class="description">This is the task description</div>
                     <div class="new-task-button no-user-select">
                         <img id="task-img" src="../src/images/add.png" alt="add">
                         <p>Add task</p>
