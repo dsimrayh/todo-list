@@ -38,6 +38,12 @@ body {
     justify-content: space-between;
 }
 
+#content-header {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 1em;
+}
+
 #mask {
     height: 100%;
     width: 100%;
@@ -253,7 +259,12 @@ hr {
 }
 
 .task-button-group {
-    margin-left: auto;
+    margin-left: 3em;
+}
+
+.left,
+.right {
+    display: flex;
 }
 
 .task-button {
