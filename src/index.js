@@ -84,3 +84,18 @@ expand.addEventListener('click', () => {
 
     expand.classList.toggle('open');
 });
+
+// Edit project vertical menu
+const verticalMenus = document.querySelectorAll('.vertical-menu');
+
+verticalMenus.forEach(menu => {
+    menu.addEventListener('click', () => {
+        menu.classList.toggle('open');
+        const projectID = menu.dataset.projectId;
+        const editProjectMenu = document.querySelector(
+            `.edit-project-menu[data-project-id="${projectID}"]`
+            );
+        editProjectMenu.classList.toggle('open');
+    });
+})
+

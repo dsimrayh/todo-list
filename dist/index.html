@@ -51,12 +51,20 @@
                 <ul class="nav-list">
                     <li class="nav-item">
                         <span class="project-title">Project 1</span>
-                        <img class="vertical-menu" src="../src/images/vertical-menu.png" alt="menu">
+                        <img class="vertical-menu" data-project-id="1" src="../src/images/vertical-menu.png" alt="menu">
                     </li>
+                        <div class="edit-project-menu" data-project-id="1">
+                            <button class="project-edit-btn project-btn">Edit</button>
+                            <button class="project-delete-btn project-btn">Delete</button>
+                        </div>
                     <li class="nav-item">
-                        <span class="project-title">Project 1</span>
-                        <img class="vertical-menu" src="../src/images/vertical-menu.png" alt="menu">
+                        <span class="project-title">Project 2</span>
+                        <img class="vertical-menu" data-project-id="2" src="../src/images/vertical-menu.png" alt="menu">
                     </li>
+                        <div class="edit-project-menu" data-project-id="2">
+                            <button class="project-edit-btn project-btn">Edit</button>
+                            <button class="project-delete-btn project-btn">Delete</button>
+                        </div>
                     <div class="new-project-button">
                         <img id="project-img" src="../src/images/add.png" alt="add">
                         New project
@@ -116,7 +124,7 @@
                     </li>
                     <div class="description">This is the task description</div>
                     <div class="clear-tasks-container">
-                        <div class="clear-tasks-button">
+                        <div class="clear-tasks-button no-user-select">
                             <img id="clear-img" src="../src/images/clear.png" alt="clear">
                             <span>Clear completed tasks</span>
                         </div>
