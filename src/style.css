@@ -13,7 +13,8 @@
 .task-complete-button,
 .clear-tasks-container,
 .vertical-menu,
-.expand {
+.expand,
+.project-btn {
     cursor: pointer;
 }
 
@@ -40,11 +41,9 @@ body {
     justify-content: space-between;
 }
 
-#content-header {
-    color: #fff;
-    font-size: 30px;
-    margin-bottom: 1em;
-}
+
+
+
 
 #mask {
     height: 100%;
@@ -53,7 +52,8 @@ body {
     position: fixed;
     z-index: 4;
 
-    display: none;
+   /* display: none; */
+   display: grid;
     place-items: center;
 }
 
@@ -65,7 +65,57 @@ body {
     height: 50%;
     width: 40%;
     background-color: #ccc;
+
+    padding: 1em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
 }
+
+.add-task-modal-title {
+    align-self: center;
+    flex: 1;
+}
+
+.add-task-input-group {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+
+    flex: 5;
+}
+
+.date-priority-group {
+    display: flex;
+    align-self: center;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.add-task-modal-button {
+    align-self: center;
+    flex: 1;
+}
+
+.add-task-modal-title,
+.add-task-input-group,
+.add-task-modal-button,
+.date-priority-group {
+    border: 1px solid red;
+}
+
+.add-task-text-input {
+    width: 100%;
+}
+
+
+
+
 
 
 
@@ -268,6 +318,13 @@ hr {
 }
 
 
+
+
+#content-header {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 1em;
+}
 
 #content-area {
     background-color: rgb(44, 58, 85);
