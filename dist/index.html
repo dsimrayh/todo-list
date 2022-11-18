@@ -15,15 +15,15 @@
 
         <div id="mask">
             <div class="modal">
-                <div class="add-task-modal-title">ADD NEW TASK</div>
+                <div class="add-task-modal-title">CREATE NEW TASK</div>
 
                 <div class="add-task-input-group">
-                    <input class="add-task-text-input" id="task-name-input" type="text" name="task-name-input" placeholder="Task name">
-                    <input class="add-task-text-input" id="task-desc-input" type="text" name="task-desc-input" placeholder="Task description">
+                    <input class="add-task-text-input input-color" id="task-name-input" type="text" name="task-name-input" placeholder="Task name">
+                    <input class="add-task-text-input input-color" id="task-desc-input" type="text" name="task-desc-input" placeholder="Task description">
 
                     <div class="date-priority-group">
-                        <input id="task-date-input" type="date" name="task-date-input">
-                        <select id="task-priority-input">
+                        <input id="task-date-input" class="input-color" type="date" name="task-date-input">
+                        <select id="task-priority-input" class="input-color">
                             <option value="default" selected></option>
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="add-task-modal-button">
-                    <button class="add-task-button">ADD TASK</button>
+                    <button class="add-task-button input-color">ADD TASK</button>
                 </div>
 
             </div>
@@ -106,7 +106,7 @@
                 <ul id="task-list">
                     <li class="task no-user-select">
                         <div class="left">
-                            <img class="expand" src="../src/images/expand.png" alt="expand">
+                            <img class="expand" data-description-id="1" src="../src/images/expand.png" alt="expand">
                             <div class="task-complete-button"></div> 
                             <span>Get something done</span>
                         </div>
@@ -119,10 +119,10 @@
                             </div>
                         </div>
                     </li>
-                    <div class="description">This is the task description</div>
+                    <div class="description" data-description-id="1">This is the task description</div>
                     <li class="task no-user-select">
                         <div class="left">
-                            <img class="expand" src="../src/images/expand.png" alt="expand">
+                            <img class="expand" data-description-id="2" src="../src/images/expand.png" alt="expand">
                             <div class="task-complete-button"></div> 
                             <span>Get something else done</span>
                         </div>
@@ -135,10 +135,10 @@
                             </div>
                         </div>
                     </li>
-                    <div class="description">This is the task description</div>
+                    <div class="description" data-description-id="2">This is the task description</div>
                     <li class="task no-user-select">
                         <div class="left">
-                            <img class="expand" src="../src/images/expand.png" alt="expand">
+                            <img class="expand" data-description-id="3" src="../src/images/expand.png" alt="expand">
                             <div class="task-complete-button"></div> 
                             <span>Get some other thing done</span>
                         </div>
@@ -151,7 +151,7 @@
                             </div>
                         </div>
                     </li>
-                    <div class="description">This is the task description</div>
+                    <div class="description" data-description-id="3">This is the task description</div>
                     <div class="clear-tasks-container">
                         <div class="clear-tasks-button no-user-select">
                             <img id="clear-img" src="../src/images/clear.png" alt="clear">

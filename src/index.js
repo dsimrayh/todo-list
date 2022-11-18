@@ -62,28 +62,31 @@ taskCompleteButtons.forEach(button => {
 
 
 // New task modal
-const addTaskButton = document.querySelector('#task-img');
+const newTaskButton = document.querySelector('#task-img');
 const mask = document.querySelector('#mask');
-const modal = document.querySelector('.modal');
+const addTaskButton = document.querySelector('.add-task-button');
 
-addTaskButton.addEventListener('click', () => {
+newTaskButton.addEventListener('click', () => {
     mask.classList.add('display-grid');
 });
 
-modal.addEventListener('click', () => {
+addTaskButton.addEventListener('click', () => {
     mask.classList.remove('display-grid')
 });
 
 
 // Open task description
-const expand = document.querySelector('.expand');
+const openDescriptionButtons = document.querySelectorAll('.expand');
+const descriptions = document.querySelectorAll('.description');
 
-expand.addEventListener('click', () => {
-    const description = document.querySelector('.description');
-    description.classList.toggle('open');
+openDescriptionButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        const id = +e.target.dataset.descriptionId;
+        const description = descriptions[id - 1];
+        description.classList.toggle('open');
+    });
+})
 
-    expand.classList.toggle('open');
-});
 
 // Edit project vertical menu
 const verticalMenus = document.querySelectorAll('.vertical-menu');
