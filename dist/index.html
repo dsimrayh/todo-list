@@ -18,17 +18,26 @@
                 <div class="add-task-modal-title">CREATE NEW TASK</div>
 
                 <div class="add-task-input-group">
-                    <input class="add-task-text-input input-color" id="task-name-input" type="text" name="task-name-input" placeholder="Task name">
-                    <input class="add-task-text-input input-color" id="task-desc-input" type="text" name="task-desc-input" placeholder="Task description">
+                    <label for="task-name-input">TASK NAME</label>
+                    <input class="add-task-text-input input-color" id="task-name-input" type="text" name="task-name-input" placeholder="Example">
+                    <label for="task-desc-input">TASK DESCRIPTION</label>
+                    <input class="add-task-text-input input-color" id="task-desc-input" type="text" name="task-desc-input" placeholder="Do something">
 
                     <div class="date-priority-group">
-                        <input id="task-date-input" class="input-color" type="date" name="task-date-input">
-                        <select id="task-priority-input" class="input-color">
-                            <option value="default" selected></option>
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
-                        </select>
+                        <div class="date-priority-labels">
+                            <label for="task-date-input">DUE DATE</label>
+                            <label for="task-priority-input">PRIORITY</label>
+                        </div>
+                        
+                        <div class="date-priority-inputs">
+                            <input id="task-date-input" class="input-color" type="date" name="task-date-input">
+                            <select id="task-priority-input" class="input-color">
+                                <option value="default" selected></option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
                     </div>
 
                 </div>
@@ -97,6 +106,13 @@
                     <div class="new-project-button">
                         <img id="project-img" src="../src/images/add.png" alt="add">
                         New project
+                    </div>
+                    <div class="new-project-menu">
+                        <input id="new-project-name" name="new-project-name" placeholder="Project name">
+                        <div class="new-project-menu-buttons">
+                            <button id="create-project-btn" class="project-btn">CREATE PROJECT</button>
+                            <button id="cancel-project-btn" class="project-btn">CANCEL</button>
+                        </div>
                     </div>
                 </ul>
             </nav>

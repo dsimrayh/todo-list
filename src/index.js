@@ -83,6 +83,7 @@ openDescriptionButtons.forEach(button => {
     button.addEventListener('click', (e) => {
         const id = +e.target.dataset.descriptionId;
         const description = descriptions[id - 1];
+        button.classList.toggle('open');
         description.classList.toggle('open');
     });
 })
@@ -100,5 +101,18 @@ verticalMenus.forEach(menu => {
             );
         editProjectMenu.classList.toggle('open');
     });
+})
+
+// New project button - open new project menu on click
+const newProjectButton = document.querySelector('#project-img');
+const newProjectMenu = document.querySelector('.new-project-menu');
+const projectCancelButton = document.querySelector('#cancel-project-btn');
+
+newProjectButton.addEventListener('click', () => {
+    newProjectMenu.classList.add('visible');
+})
+
+projectCancelButton.addEventListener('click', () => {
+    newProjectMenu.classList.remove('visible');
 })
 
