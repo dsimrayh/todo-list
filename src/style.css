@@ -496,6 +496,11 @@ hr {
     align-items: center;    
 }
 
+.no-task {
+    display: flex;
+    justify-content: center;
+}
+
 .task-button-group {
     margin-left: 3em;
 }
