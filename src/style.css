@@ -174,18 +174,6 @@ label {
     color: rgb(17, 25, 37);
 }
 
-.add-task-modal-title,
-.add-task-input-group,
-.add-task-modal-button,
-.date-priority-group {
-    /*border: 1px solid red;*/
-}
-
-
-
-
-
-
 
 
 
@@ -485,7 +473,7 @@ hr {
 }
 
 .task {
-    border-bottom: 1px solid rgba(204, 204, 204, 0.329);
+    border-bottom: 1px solid rgba(185, 185, 185, 0.35);
     padding: 14px 0px;
     font-size: 18px;
     margin: 14px 0;

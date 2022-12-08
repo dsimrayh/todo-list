@@ -1,7 +1,7 @@
 import {updateHeader} from './DOM.js';
 
 function handleHomeTileClick(homeTile) {
-    //PUT UPDATE HEADER HERE
+    updateHeader(homeTile);
     switch(homeTile) {
         case 'all-tasks':
             displayAllTasks();
@@ -21,19 +21,19 @@ function handleHomeTileClick(homeTile) {
 }
 
 function displayAllTasks() {
-    updateHeader("All Tasks");
+    console.log("All tasks");
 }
 
 function displayToday() {
-    updateHeader("Today");
+    console.log("Today");
 }
 
 function displayThisWeek() {
-    updateHeader("This week");
+    console.log("This week");
 }
 
 function displayImportant() {
-    updateHeader("Important");
+    console.log("Important");
 }
 
 

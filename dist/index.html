@@ -19,9 +19,9 @@
 
                 <div class="add-task-input-group">
                     <label for="task-name-input">TASK NAME</label>
-                    <input class="add-task-text-input input-color" id="task-name-input" type="text" name="task-name-input" placeholder="Example">
+                    <input class="input add-task-text-input input-color" id="task-name-input" type="text" name="task-name-input" placeholder="Example">
                     <label for="task-desc-input">TASK DESCRIPTION</label>
-                    <input class="add-task-text-input input-color" id="task-desc-input" type="text" name="task-desc-input" placeholder="Do something">
+                    <input class="input add-task-text-input input-color" id="task-desc-input" type="text" name="task-desc-input" placeholder="Do something">
 
                     <div class="date-priority-group">
                         <div class="date-priority-labels">
@@ -30,9 +30,9 @@
                         </div>
                         
                         <div class="date-priority-inputs">
-                            <input id="task-date-input" class="input-color" type="date" name="task-date-input">
+                            <input id="task-date-input" class="input input-color" type="date" name="task-date-input">
                             <select id="task-priority-input" class="input-color">
-                                <option value="default" selected></option>
+                                <option value="none" selected>None</option>
                                 <option value="low">Low</option>
                                 <option value="medium">Medium</option>
                                 <option value="high">High</option>
@@ -66,19 +66,19 @@
                 <div class="nav-header">Home</div>
                 <hr>
                 <ul id="home-tiles" class="nav-list">
-                    <li id="all-tasks" class="nav-item">
+                    <li id="all-tasks" class="home-tile nav-item active">
                         <img class="nav-icon" src="../src/images/inbox.png" alt="inbox">
                         All Tasks
                     </li>
-                    <li id="today" class="nav-item">
+                    <li id="today" class="home-tile nav-item">
                         <img class="nav-icon" src="../src/images/today.png" alt="inbox">
                         Today
                     </li>
-                    <li id="this-week" class="nav-item">
+                    <li id="this-week" class="home-tile nav-item">
                         <img class="nav-icon" src="../src/images/week.png" alt="inbox">
                         This Week
                     </li>
-                    <li id="important" class="nav-item">
+                    <li id="important" class="home-tile nav-item">
                         <img class="nav-icon" src="../src/images/important.png" alt="inbox">
                         Important
                     </li>
@@ -118,7 +118,7 @@
             </nav>
 
             <div id="content-area">
-                <div id="content-header">All Tasks</div>
+                <div id="content-header">All tasks</div>
                 <ul id="task-list">
                     <li class="task no-user-select">
                         <div class="left">

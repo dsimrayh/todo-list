@@ -1,4 +1,4 @@
-export default addEventListeners;
+import {processNewTaskInput} from './createTask.js';
 
 function addEventListeners() {
 
@@ -29,15 +29,14 @@ function addEventListeners() {
     // Navbar list items - highlight on click
     const navbarItems = document.querySelectorAll('.nav-item');
 
-    document.addEventListener('click', (e) => {
-        const target = e.target;
-        if(target.className === 'nav-item') {
+    navbarItems.forEach(item => {
+        item.addEventListener('click', () => {
             navbarItems.forEach(navbarItem => {
                 navbarItem.classList.remove('active');
             })
-        }
-        target.classList.add('active');
-    });
+            item.classList.add('active');
+        })
+    })
 
     // Important button / fill on click
     const importantButtons = document.querySelectorAll('.important')
@@ -75,6 +74,9 @@ function addEventListeners() {
     });
 
     addTaskButton.addEventListener('click', () => {
+        const inputs = Array.from(document.querySelectorAll('.input'));
+        if(inputs.some(input => input.value === '')) return;
+        processNewTaskInput();
         mask.classList.remove('display-grid')
     });
 
@@ -120,3 +122,5 @@ function addEventListeners() {
         newProjectMenu.classList.remove('visible');
     })
 }
+
+export default addEventListeners;
