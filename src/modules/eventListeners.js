@@ -1,4 +1,4 @@
-import {processNewTaskInput} from './createTask.js';
+import {processNewTaskInput, clearTaskInput} from './createTask.js';
 
 function addEventListeners() {
 
@@ -64,7 +64,7 @@ function addEventListeners() {
     });
 
 
-    // New task modal
+    // Open new task modal / add task
     const newTaskButton = document.querySelector('#task-img');
     const mask = document.querySelector('#mask');
     const addTaskButton = document.querySelector('.add-task-button');
@@ -76,8 +76,17 @@ function addEventListeners() {
     addTaskButton.addEventListener('click', () => {
         const inputs = Array.from(document.querySelectorAll('.input'));
         if(inputs.some(input => input.value === '')) return;
+
         processNewTaskInput();
-        mask.classList.remove('display-grid')
+        mask.classList.remove('display-grid');
+    });
+
+    // Close task modal
+    const closeTaskModalButton = document.querySelector('.close-task-modal');
+
+    closeTaskModalButton.addEventListener('click', () => {
+        mask.classList.remove('display-grid');
+        clearTaskInput();
     });
 
 

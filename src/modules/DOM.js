@@ -1,4 +1,6 @@
-export {clearTasks, clearCompletedTasks, showNoTasks, updateHeader}
+export {clearTasks, clearCompletedTasks, showNoTasks, updateHeader, createTaskElement}
+
+// **************** GENERAL FUNCTIONS ****************
 
 function clearTasks () {
      // To be added
@@ -32,4 +34,15 @@ function updateHeader(homeTile) {
 
     const header = document.querySelector('#content-header');
     header.innerText = headerText;
+}
+
+
+// **************** TASK SPECIFIC FUNCTIONS ****************
+
+function createTaskElement(task) {
+    const taskListDOM = document.querySelector('#task-list');
+    const {name, description, dueDate, priority} = task;
+
+    
+
 }

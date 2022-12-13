@@ -1,4 +1,4 @@
-export {processNewTaskInput}
+import { createTaskElement } from "./DOM.js";
 
 /*
 PRIORITY COLORS:
@@ -8,16 +8,27 @@ Low: rgba(0, 255, 34, 0.5)
 None: rgba(185, 185, 185, 0.35)
 */
 
+// Primary task list to store all tasks
 let taskList = [];
 
-const Task = (name, description, dueDate, priority, important, completed) => {
+const Task = (name, description, dueDate, priority) => {
+    let _important = false;
+    let _completed = false;
+
+    const isImportant = () => _important;
+
+    const toggleImportant = () =>  _important = !_important;
+
+    const toggleCompleted = () => _completed = !_completed;
+
     return {
         name,
         description,
         dueDate,
         priority,
-        important,
-        completed
+        toggleImportant,
+        toggleCompleted,
+        isImportant
     };
 }
 
@@ -26,20 +37,29 @@ function processNewTaskInput() {
     const description = document.querySelector('#task-desc-input').value;
     const dueDate = document.querySelector('#task-date-input').value;
     const priority = document.querySelector('#task-priority-input').value;
-    const important = false;
-    const completed = false;
 
-    const newTask = Task(name, description, dueDate, priority, important, completed);
+    const newTask = Task(name, description, dueDate, priority);
 
     addNewTask(newTask);
 
+    clearTaskInput();
+
+}
+
+function clearTaskInput() {
+    const textDateInputs = Array.from(document.querySelectorAll('.input'));
+    const priorityInput = document.querySelector('#task-priority-input');
+    textDateInputs.forEach(input => input.value = '');
+    priorityInput.selectedIndex = 0;
 }
 
 function addNewTask(task) {
     // DOM function(s) to create task element
+    // Event listeners for buttons
+    // Add to master task list
+    createTaskElement(task);
 
     taskList.push(task)
-
-    console.log(task);
-    console.log(taskList);
 }
+
+export {processNewTaskInput, clearTaskInput}

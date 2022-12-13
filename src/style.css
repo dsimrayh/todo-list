@@ -15,7 +15,8 @@
 .vertical-menu,
 .expand,
 .project-btn,
-.add-task-button {
+.add-task-button,
+.close-task-modal {
     cursor: pointer;
 }
 
@@ -72,6 +73,18 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column;
+}
+
+.close-task-modal {
+    padding: 0.2rem;
+    height: 2rem;
+    width: 2rem;
+    margin-bottom: -2.5rem;
+    align-self: flex-end;
+}
+
+.close-task-modal:hover {
+    box-shadow: 0px 0px 10px var(--main-color);
 }
 
 .add-task-modal-title {
