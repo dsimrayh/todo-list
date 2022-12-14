@@ -43,6 +43,81 @@ function createTaskElement(task) {
     const taskListDOM = document.querySelector('#task-list');
     const {name, description, dueDate, priority} = task;
 
-    
+    const li = document.createElement('li');
+    li.classList.add('task', 'no-user-select');
+
+    const leftDiv = createLeftSide(name);
+    const rightDiv = createRightSide(dueDate);
+    li.appendChild(leftDiv);
+    li.appendChild(rightDiv);
+
+    //const taskDescription = createTaskDescription();
+
+    taskListDOM.appendChild(li);
+    //taskListDOM.appendChild(taskDescription);
+}
+
+function createLeftSide(taskName) {
+    const div = document.createElement('div');
+    div.classList.add('left');
+
+    const img = document.createElement('img');
+    img.classList.add('expand');
+    img.dataset.descriptionId = 1;
+    img.src = '../src/images/expand.png';
+    img.alt = 'expand';
+
+    const taskCompleteButton = document.createElement('div');
+    taskCompleteButton.classList.add('task-complete-button');
+
+    const span = document.createElement('span');
+    span.textContent = taskName;
+
+    div.appendChild(img);
+    div.appendChild(taskCompleteButton);
+    div.appendChild(span);
+
+    return div;
+}
+
+function createRightSide(taskDueDate) {
+    const div = document.createElement('div');
+    div.classList.add('right');
+
+    const dueDateElement = document.createElement('div');
+    dueDateElement.classList.add('due-date');
+    dueDateElement.textContent = taskDueDate;
+
+    const buttonGroup = document.createElement('div');
+    buttonGroup.classList.add('task-button-group');
+
+    const importantBtn = document.createElement('img');
+    importantBtn.classList.add('task-button', 'important');
+    importantBtn.src = '../src/images/important.png';
+    importantBtn.alt = 'important';
+
+    const editBtn = document.createElement('img');
+    editBtn.classList.add('task-button');
+    editBtn.src = '../src/images/edit.png';
+    editBtn.alt = 'edit';
+
+    const deleteButton = document.createElement('img');
+    deleteButton.classList.add('task-button');
+    deleteButton.src = '../src/images/trash.png';
+    deleteButton.alt = 'delete';
+
+    buttonGroup.appendChild(importantBtn);
+    buttonGroup.appendChild(editBtn);
+    buttonGroup.appendChild(deleteButton);
+
+    div.appendChild(dueDateElement);
+    div.appendChild(buttonGroup);
+
+    return div;
+}
+
+function createTaskDescription() {
 
 }
+
+// *********************************************************
