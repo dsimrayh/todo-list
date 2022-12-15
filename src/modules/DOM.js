@@ -1,5 +1,7 @@
 export {clearTasks, clearCompletedTasks, showNoTasks, updateHeader, createTaskElement}
 
+import {addDays, format} from 'date-fns';
+
 // **************** GENERAL FUNCTIONS ****************
 
 function clearTasks () {
@@ -42,19 +44,22 @@ function updateHeader(homeTile) {
 function createTaskElement(task) {
     const taskListDOM = document.querySelector('#task-list');
     const {name, description, dueDate, priority} = task;
+    const dueDateFormatted = addDays(new Date(dueDate), 1);
 
     const li = document.createElement('li');
     li.classList.add('task', 'no-user-select');
 
     const leftDiv = createLeftSide(name);
-    const rightDiv = createRightSide(dueDate);
+    const rightDiv = createRightSide(dueDateFormatted);
     li.appendChild(leftDiv);
     li.appendChild(rightDiv);
 
-    //const taskDescription = createTaskDescription();
+    const taskDescription = createTaskDescription(description);
 
     taskListDOM.appendChild(li);
-    //taskListDOM.appendChild(taskDescription);
+    taskListDOM.appendChild(taskDescription);
+
+    li.style.borderColor = setTaskPriorityColor(priority);
 }
 
 function createLeftSide(taskName) {
@@ -86,7 +91,7 @@ function createRightSide(taskDueDate) {
 
     const dueDateElement = document.createElement('div');
     dueDateElement.classList.add('due-date');
-    dueDateElement.textContent = taskDueDate;
+    dueDateElement.textContent = format(taskDueDate, 'P');
 
     const buttonGroup = document.createElement('div');
     buttonGroup.classList.add('task-button-group');
@@ -116,7 +121,24 @@ function createRightSide(taskDueDate) {
     return div;
 }
 
-function createTaskDescription() {
+function createTaskDescription(taskDescription) {
+    const div = document.createElement('div');
+    div.classList.add('description');
+    div.dataset.descriptionId = 1;
+    div.textContent = taskDescription;
+
+    return div;
+}
+
+function setTaskPriorityColor(taskPriority) {
+    let colors = {
+        'high': 'rgba(255, 2, 2, 0.5)',
+        'medium': 'rgba(238, 255, 0, 0.6)',
+        'low': 'rgba(0, 255, 34, 0.5)',
+        'none': 'rgba(185, 185, 185, 0.35)'
+    }
+
+    return colors[taskPriority]
 
 }
 

@@ -1,13 +1,5 @@
 import { createTaskElement } from "./DOM.js";
 
-/*
-PRIORITY COLORS:
-High: rgba(255, 2, 2, 0.5)
-Med: rgba(238, 255, 0, 0.5)
-Low: rgba(0, 255, 34, 0.5)
-None: rgba(185, 185, 185, 0.35)
-*/
-
 // Primary task list to store all tasks
 let taskList = [];
 
