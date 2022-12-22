@@ -1,4 +1,4 @@
-import addEventListeners from './modules/eventListeners.js'
+import {addEventListeners} from './modules/eventListeners.js'
 import { handleHomeTileClick } from './modules/home.js';
 import {clearCompletedTasks} from './modules/DOM.js'
 import {showNoTasks} from './modules/DOM.js';

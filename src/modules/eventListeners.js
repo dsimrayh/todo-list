@@ -61,8 +61,7 @@ function addEventListeners() {
         button.addEventListener('click', () => {
             button.classList.toggle('checked');
         })
-    });
-
+    })
 
     // Open new task modal / add task
     const newTaskButton = document.querySelector('#task-img');
@@ -90,18 +89,18 @@ function addEventListeners() {
     });
 
 
-    // Open task description
-    const openDescriptionButtons = document.querySelectorAll('.expand');
-    const descriptions = document.querySelectorAll('.description');
+   // Open task description
+   const openDescriptionButtons = document.querySelectorAll('.expand');
+   const descriptions = document.querySelectorAll('.description');
 
-    openDescriptionButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            const id = +e.target.dataset.descriptionId;
-            const description = descriptions[id - 1];
-            button.classList.toggle('open');
-            description.classList.toggle('open');
-        });
-    })
+   openDescriptionButtons.forEach(button => {
+       button.addEventListener('click', (e) => {
+           const id = +e.target.dataset.descriptionId;
+           const description = descriptions[id - 1];
+           button.classList.toggle('open');
+           description.classList.toggle('open');
+       });
+   })
 
 
     // Edit project vertical menu
@@ -132,4 +131,4 @@ function addEventListeners() {
     })
 }
 
-export default addEventListeners;
+export {addEventListeners}
