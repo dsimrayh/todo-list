@@ -3,12 +3,6 @@ import {addDays, format} from 'date-fns';
 // **************** GENERAL FUNCTIONS ****************
 
 function clearTasks () {
-     // To be added
-}
-
-// EDIT WITH ADDITION OF TASK IDs (Also remove descriptions)
-// Clears all completed tasks
-function clearCompletedTasks() {
     const taskList = document.querySelector('#task-list');
     const tasks = document.querySelectorAll('.task');
     tasks.forEach(task => {
@@ -18,6 +12,8 @@ function clearCompletedTasks() {
 
 // Creates and appends div to task list that says "No tasks remaining"
 function showNoTasks() {
+    if(document.querySelector('.no-task') !== null) return;
+    
     const noTasksElement = document.createElement('div');
     noTasksElement.classList.add('task', 'no-task');
     noTasksElement.textContent = "No tasks remaining";
@@ -46,6 +42,7 @@ function createTaskElement(task, taskID) {
 
     const li = document.createElement('li');
     li.classList.add('task', 'no-user-select');
+    li.dataset.taskId = taskID;
 
     const leftDiv = createLeftSide(name, taskID);
     const rightDiv = createRightSide(dueDateFormatted, taskID);
@@ -147,4 +144,4 @@ function setTaskPriorityColor(taskPriority) {
 
 // *********************************************************
 
-export {clearTasks, clearCompletedTasks, showNoTasks, updateHeader, createTaskElement}
+export {clearTasks, showNoTasks, updateHeader, createTaskElement}

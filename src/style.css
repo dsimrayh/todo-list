@@ -499,6 +499,12 @@ hr {
     align-items: center;    
 }
 
+.task.completed {
+    text-decoration: line-through;
+    opacity: 0.5;
+    color: #777;
+}
+
 .no-task {
     display: flex;
     justify-content: center;
