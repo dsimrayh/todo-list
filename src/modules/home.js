@@ -1,7 +1,12 @@
-import {updateHeader} from './DOM.js';
+import {updateHeader, clearTasks, showNoTasks} from './DOM.js';
+import {masterTaskList, displayTask} from './createTask';
+import {isToday, addHours, getWeek} from 'date-fns';
+
 
 function handleHomeTileClick(homeTile) {
     updateHeader(homeTile);
+    clearTasks();
+    showNoTasks();
     switch(homeTile) {
         case 'all-tasks':
             displayAllTasks();
@@ -21,19 +26,43 @@ function handleHomeTileClick(homeTile) {
 }
 
 function displayAllTasks() {
-    console.log("All tasks");
+    masterTaskList.forEach(task => {
+        displayTask(task, task.getID());
+    })
 }
 
 function displayToday() {
-    console.log("Today");
+    masterTaskList.forEach(task => {
+        const dueDate = addHours(new Date(task.dueDate) , 8);
+        if(isToday(dueDate)) {
+            displayTask(task, task.getID());
+        }
+    })
 }
 
 function displayThisWeek() {
-    console.log("This week");
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const today = `${month}/${day}/${year}`;
+    const thisWeek = getWeek(new Date(today), {'weekStartsOn': 1});
+
+    masterTaskList.forEach(task => {
+        const dueDate = addHours(new Date(task.dueDate) , 8); 
+        const dueDateWeek = getWeek(new Date(dueDate), {'weekStartsOn': 1});
+        if(dueDateWeek === thisWeek + 1) {
+            displayTask(task, task.getID());
+        }
+        if(thisWeek === 53 && dueDateWeek === 1) {
+            displayTask(task, task.getID());
+        }
+        return;
+    });
 }
 
 function displayImportant() {
-    console.log("Important");
+    console.log('Important');
 }
 
 

@@ -2,12 +2,22 @@ import {addDays, format} from 'date-fns';
 
 // **************** GENERAL FUNCTIONS ****************
 
+// Removes all task and description elements from DOM
 function clearTasks () {
     const taskList = document.querySelector('#task-list');
     const tasks = document.querySelectorAll('.task');
+    const descriptions = document.querySelectorAll('.description');
+    
+    // Return if no tasks displayed
+    const noTask = document.querySelector('.no-task');
+    if(noTask !== null) return;
+
     tasks.forEach(task => {
         taskList.removeChild(task);
-    })
+    });
+    descriptions.forEach(description => {
+        taskList.removeChild(description);
+    });
 }
 
 // Creates and appends div to task list that says "No tasks remaining"

@@ -75,8 +75,8 @@ function addNewTask(task) {
     addTaskEventListeners(task, taskIdCounter);
     taskIdCounter++;
     taskCounter++;
-
 }
+
 // Add event listeners to each of the buttons on a task element
 function addTaskEventListeners(task, taskID) {
     const description = document.querySelector(`.description[data-task-id="${taskID}"`);
@@ -145,4 +145,10 @@ function removeNoTasksDiv() {
     return;
 }
 
-export {processNewTaskInput, clearTaskInput, checkIfNoTasks, clearCompletedTasks}
+function displayTask(task, taskId) {
+    removeNoTasksDiv();
+    createTaskElement(task, taskId);
+    addTaskEventListeners(task, taskId);
+}
+
+export {processNewTaskInput, clearTaskInput, checkIfNoTasks, clearCompletedTasks, masterTaskList, displayTask}
