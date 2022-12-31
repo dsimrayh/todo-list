@@ -103,11 +103,10 @@ function createRightSide(taskDueDate, taskID) {
     buttonGroup.classList.add('task-button-group');
 
     const importantBtn = document.createElement('img');
-    importantBtn.classList.add('task-button', 'important');
+    importantBtn.classList.add('task-button', 'important'); 
     importantBtn.src = '../src/images/important.png';
     importantBtn.alt = 'important';
     importantBtn.dataset.taskId = taskID;
-    importantBtn.dataset.selected = 'false';
 
     const editBtn = document.createElement('img');
     editBtn.classList.add('task-button', 'edit');
@@ -149,7 +148,6 @@ function setTaskPriorityColor(taskPriority) {
     }
 
     return colors[taskPriority];
-
 }
 
 // *********************************************************

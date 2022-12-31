@@ -4,11 +4,9 @@ import { createTaskElement } from "./DOM.js";
 let masterTaskList = [];
 // Counter for task ID #s
 let taskIdCounter = 0;
-// Variable to keep track of number of tasks
-let taskCounter = 0;
 
 function checkIfNoTasks() {
-    return taskCounter === 0;
+    return masterTaskList.length === 0;
 }
 
 // Task factory function
@@ -74,7 +72,6 @@ function addNewTask(task) {
     masterTaskList.push(task)
     addTaskEventListeners(task, taskIdCounter);
     taskIdCounter++;
-    taskCounter++;
 }
 
 // Add event listeners to each of the buttons on a task element
@@ -96,18 +93,15 @@ function addTaskEventListeners(task, taskID) {
     
     const importantButton = document.querySelector(`.important[data-task-id="${taskID}"`);
     importantButton.addEventListener('click', () => {
-        const selected = importantButton.dataset.selected;
-        if(selected === 'false') {
+        let important = task.isImportant();
+        if(important === false) {
             importantButton.src = '../src/images/important-filled.png';
-            importantButton.dataset.selected = 'true';
+            task.toggleImportant();
         }
-        if(selected === 'true') {
+        if(important === true) {
             importantButton.src = '../src/images/important.png';
-            importantButton.dataset.selected = 'false';
+            task.toggleImportant();
         }
- 
-        task.toggleImportant();
-
     });
 
     const editButton = document.querySelector(`.edit[data-task-id="${taskID}"`);
@@ -128,12 +122,16 @@ function clearCompletedTasks() {
     const tasks = document.querySelectorAll('.task');
     tasks.forEach(task => {
         if(task.classList.contains('completed')) {
+            const taskId = +task.dataset.taskId;
             taskList.removeChild(task);
             taskList.removeChild(
                 document.querySelector(`.description[data-task-id="${task.dataset.taskId}"]`)
                 );
-            taskCounter--;
-        }
+
+            const taskToRemoveFromMasterList = masterTaskList.findIndex(task => task.getID() === taskId);
+            
+            masterTaskList.splice(taskToRemoveFromMasterList, 1);
+        } 
     });
 }
 
@@ -145,6 +143,7 @@ function removeNoTasksDiv() {
     return;
 }
 
+// Function used to create and display a task element for an already existing task (used in home tile switching)
 function displayTask(task, taskId) {
     removeNoTasksDiv();
     createTaskElement(task, taskId);

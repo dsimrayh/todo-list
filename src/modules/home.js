@@ -2,7 +2,6 @@ import {updateHeader, clearTasks, showNoTasks} from './DOM.js';
 import {masterTaskList, displayTask} from './createTask';
 import {isToday, addHours, getWeek} from 'date-fns';
 
-
 function handleHomeTileClick(homeTile) {
     updateHeader(homeTile);
     clearTasks();
@@ -28,6 +27,10 @@ function handleHomeTileClick(homeTile) {
 function displayAllTasks() {
     masterTaskList.forEach(task => {
         displayTask(task, task.getID());
+        if(task.isImportant() === true) {
+            document.querySelector(`.important[data-task-id="${task.getID()}"`)
+            .src = '../src/images/important-filled.png';
+        }
     })
 }
 
@@ -36,6 +39,11 @@ function displayToday() {
         const dueDate = addHours(new Date(task.dueDate) , 8);
         if(isToday(dueDate)) {
             displayTask(task, task.getID());
+        }
+        if(task.isImportant() === false) return;
+        else {
+            document.querySelector(`.important[data-task-id="${task.getID()}"`)
+            .src = '../src/images/important-filled.png';
         }
     })
 }
@@ -51,19 +59,25 @@ function displayThisWeek() {
     masterTaskList.forEach(task => {
         const dueDate = addHours(new Date(task.dueDate) , 8); 
         const dueDateWeek = getWeek(new Date(dueDate), {'weekStartsOn': 1});
-        if(dueDateWeek === thisWeek + 1) {
+        if(dueDateWeek === thisWeek) {
             displayTask(task, task.getID());
         }
-        if(thisWeek === 53 && dueDateWeek === 1) {
-            displayTask(task, task.getID());
+        if(task.isImportant() === false) return;
+        else {
+            document.querySelector(`.important[data-task-id="${task.getID()}"`)
+            .src = '../src/images/important-filled.png';
         }
-        return;
     });
 }
 
 function displayImportant() {
-    console.log('Important');
+    masterTaskList.forEach(task => {
+        if(task.isImportant() === true) {
+            displayTask(task, task.getID());
+            document.querySelector(`.important[data-task-id="${task.getID()}"`)
+            .src = '../src/images/important-filled.png';
+        }
+    });
 }
-
 
 export {handleHomeTileClick}
