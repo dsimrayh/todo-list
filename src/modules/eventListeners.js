@@ -1,4 +1,4 @@
-import {processNewTaskInput, clearTaskInput} from './createTask.js';
+import {processNewTaskInput, processTaskInput, clearTaskInput} from './createTask.js';
 
 function addEventListeners() {
 
@@ -85,6 +85,17 @@ function addEventListeners() {
 
     closeTaskModalButton.addEventListener('click', () => {
         mask.classList.remove('display-grid');
+        const title = document.querySelector('.add-task-modal-title');
+        title.textContent = 'CREATE NEW TASK';
+
+        const addTaskButton = document.querySelector('.add-task-modal-button');
+        const editTaskButton = document.querySelector('.edit-task-modal-button');
+
+        if(addTaskButton.classList.contains('hidden')) {
+            addTaskButton.classList.remove('hidden');
+            editTaskButton.classList.add('hidden');
+        }
+
         clearTaskInput();
     });
 

@@ -1,4 +1,5 @@
 import { createTaskElement } from "./DOM.js";
+import {deleteTask, editTask } from "./editTask.js";
 
 // Primary task list to store all tasks
 let masterTaskList = [];
@@ -106,12 +107,12 @@ function addTaskEventListeners(task, taskID) {
 
     const editButton = document.querySelector(`.edit[data-task-id="${taskID}"`);
     editButton.addEventListener('click', () => {
-        console.log(`Edit task ${taskID}`);
+        editTask(taskID);
     });
 
     const deleteButton = document.querySelector(`.delete[data-task-id="${taskID}"`);
     deleteButton.addEventListener('click', () => {
-        console.log(`Delete task ${taskID}`);
+        deleteTask(taskID);
     });
 
 }

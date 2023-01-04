@@ -40,8 +40,7 @@ function displayToday() {
         if(isToday(dueDate)) {
             displayTask(task, task.getID());
         }
-        if(task.isImportant() === false) return;
-        else {
+        if(isToday(dueDate) && task.isImportant() === true) {
             document.querySelector(`.important[data-task-id="${task.getID()}"`)
             .src = '../src/images/important-filled.png';
         }
@@ -62,8 +61,7 @@ function displayThisWeek() {
         if(dueDateWeek === thisWeek) {
             displayTask(task, task.getID());
         }
-        if(task.isImportant() === false) return;
-        else {
+        if(dueDateWeek === thisWeek && task.isImportant() === true) {
             document.querySelector(`.important[data-task-id="${task.getID()}"`)
             .src = '../src/images/important-filled.png';
         }
