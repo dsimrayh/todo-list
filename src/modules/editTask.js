@@ -83,7 +83,9 @@ function updateInputs(taskId) {
 
 // Deletes the selected task - removes from DOM and master task list
 function deleteTask(taskId) {
-    alert('Are you sure?');
+    const isUserSure = confirm('Are you sure you want to delete this task?');
+    if(isUserSure === false) return;
+
     const taskList = document.querySelector('#task-list');
     const task = document.querySelector(`.task[data-task-id="${taskId}"]`);
     const description = document.querySelector(`.description[data-task-id="${taskId}"]`);

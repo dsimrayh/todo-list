@@ -16,6 +16,7 @@
 .expand,
 .project-btn,
 .add-task-button,
+.edit-task-button,
 .close-task-modal {
     cursor: pointer;
 }

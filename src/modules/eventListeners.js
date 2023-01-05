@@ -38,31 +38,6 @@ function addEventListeners() {
         })
     })
 
-    // Important button / fill on click
-    const importantButtons = document.querySelectorAll('.important')
-
-    importantButtons.forEach(button => {
-        let selected = false;
-        button.addEventListener('click', () => {
-            selected = !selected;
-            if(selected) {
-                button.src = "../src/images/important-filled.png"
-            } else {
-                button.src = "../src/images/important.png"
-            }
-        })
-            
-    });
-
-    // Task complete button - green checkmark on click
-    const taskCompleteButtons = document.querySelectorAll('.task-complete-button');
-
-    taskCompleteButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            button.classList.toggle('checked');
-        })
-    })
-
     // Open new task modal / add task
     const newTaskButton = document.querySelector('#task-img');
     const mask = document.querySelector('#mask');
@@ -99,21 +74,6 @@ function addEventListeners() {
         clearTaskInput();
     });
 
-
-   // Open task description
-   const openDescriptionButtons = document.querySelectorAll('.expand');
-   const descriptions = document.querySelectorAll('.description');
-
-   openDescriptionButtons.forEach(button => {
-       button.addEventListener('click', (e) => {
-           const id = +e.target.dataset.descriptionId;
-           const description = descriptions[id - 1];
-           button.classList.toggle('open');
-           description.classList.toggle('open');
-       });
-   })
-
-
     // Edit project vertical menu
     const verticalMenus = document.querySelectorAll('.vertical-menu');
 
@@ -143,3 +103,49 @@ function addEventListeners() {
 }
 
 export {addEventListeners}
+
+
+// ============== DEPRECATED =================
+
+  //  // Important button / fill on click
+  //  const importantButtons = document.querySelectorAll('.important')
+//
+  //  importantButtons.forEach(button => {
+  //      let selected = false;
+  //      button.addEventListener('click', () => {
+  //          selected = !selected;
+  //          if(selected) {
+  //              button.src = "../src/images/important-filled.png"
+  //          } else {
+  //              button.src = "../src/images/important.png"
+  //          }
+  //      })
+  //          
+  //  });
+
+
+
+//
+  // // Open task description
+  // const openDescriptionButtons = document.querySelectorAll('.expand');
+  // const descriptions = document.querySelectorAll('.description');
+//
+  // openDescriptionButtons.forEach(button => {
+  //     button.addEventListener('click', (e) => {
+  //         const id = +e.target.dataset.descriptionId;
+  //         const description = descriptions[id - 1];
+  //         button.classList.toggle('open');
+  //         description.classList.toggle('open');
+  //     });
+  // })
+//
+
+
+ //   // Task complete button - green checkmark on click
+ //   const taskCompleteButtons = document.querySelectorAll('.task-complete-button');
+//
+ //   taskCompleteButtons.forEach(button => {
+ //       button.addEventListener('click', () => {
+ //           button.classList.toggle('checked');
+ //       })
+ //   });

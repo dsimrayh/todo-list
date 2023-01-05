@@ -80,6 +80,7 @@ function addTaskEventListeners(task, taskID) {
     const description = document.querySelector(`.description[data-task-id="${taskID}"`);
     const expand = document.querySelector(`.expand[data-task-id="${taskID}"`);
     expand.addEventListener('click', () => {
+        if(task.isCompleted() === true) return;
         expand.classList.toggle('open');
         description.classList.toggle('open');
     });
@@ -88,12 +89,17 @@ function addTaskEventListeners(task, taskID) {
     const taskElement = document.querySelector(`.task[data-task-id="${taskID}"`);
     taskCompleteButton.addEventListener('click', () => {
         task.toggleCompleted();
+        if(description.classList.contains('open')) {
+            description.classList.remove('open');
+            expand.classList.remove('open');
+        }
         taskCompleteButton.classList.toggle('checked');
         taskElement.classList.toggle('completed');
     });
     
     const importantButton = document.querySelector(`.important[data-task-id="${taskID}"`);
     importantButton.addEventListener('click', () => {
+        if(task.isCompleted() === true) return;
         let important = task.isImportant();
         if(important === false) {
             importantButton.src = '../src/images/important-filled.png';
@@ -107,11 +113,13 @@ function addTaskEventListeners(task, taskID) {
 
     const editButton = document.querySelector(`.edit[data-task-id="${taskID}"`);
     editButton.addEventListener('click', () => {
+        if(task.isCompleted() === true) return;
         editTask(taskID);
     });
 
     const deleteButton = document.querySelector(`.delete[data-task-id="${taskID}"`);
     deleteButton.addEventListener('click', () => {
+        if(task.isCompleted() === true) return;
         deleteTask(taskID);
     });
 
