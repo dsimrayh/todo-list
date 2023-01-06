@@ -22,7 +22,4 @@ clearTasksBtn.addEventListener('click', () => {
         showNoTasks();
     }
 });
-
-
-
               

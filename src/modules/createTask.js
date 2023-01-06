@@ -1,5 +1,5 @@
 import { createTaskElement } from "./DOM.js";
-import {deleteTask, editTask } from "./editTask.js";
+import { deleteTask, editTask } from "./editTask.js";
 
 // Primary task list to store all tasks
 let masterTaskList = [];
@@ -17,15 +17,10 @@ const Task = (name, description, dueDate, priority) => {
     let _id = null;
 
     const isImportant = () => _important;
-
     const isCompleted = () => _completed;
-
     const toggleImportant = () =>  _important = !_important;
-
     const toggleCompleted = () => _completed = !_completed;
-
     const setID = (value) => _id = value;
-
     const getID = () => _id;
 
     return {

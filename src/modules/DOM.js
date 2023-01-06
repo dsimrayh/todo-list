@@ -1,4 +1,4 @@
-import {addDays, format} from 'date-fns';
+import { addDays, format } from 'date-fns';
 
 // **************** GENERAL FUNCTIONS ****************
 
@@ -150,6 +150,12 @@ function setTaskPriorityColor(taskPriority) {
     return colors[taskPriority];
 }
 
-// *********************************************************
+// **************** PROJECT SPECIFIC FUNCTIONS ****************
 
-export {clearTasks, showNoTasks, updateHeader, createTaskElement}
+function createProjectElement(project, projectId) {
+
+}
+
+// ************************************************************
+
+export {clearTasks, showNoTasks, updateHeader, createTaskElement, createProjectElement}

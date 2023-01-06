@@ -1,4 +1,5 @@
-import {processNewTaskInput, processTaskInput, clearTaskInput} from './createTask.js';
+import { processNewTaskInput, clearTaskInput } from './createTask.js';
+import { processNewProjectInput, clearProjectInput } from './createProject.js';
 
 function addEventListeners() {
 
@@ -88,18 +89,26 @@ function addEventListeners() {
         });
     })
 
-    // New project button - open new project menu on click
+    // New project button - open new project menu on click + create btn and cancel btn listeners
     const newProjectButton = document.querySelector('#project-img');
     const newProjectMenu = document.querySelector('.new-project-menu');
+    const projectCreateButton = document.querySelector('#create-project-btn');
     const projectCancelButton = document.querySelector('#cancel-project-btn');
 
     newProjectButton.addEventListener('click', () => {
         newProjectMenu.classList.add('visible');
-    })
+    });
+
+    projectCreateButton.addEventListener('click', () => {
+        if(document.querySelector('#new-project-name').value === '') return;
+        processNewProjectInput();
+        clearProjectInput();
+        newProjectMenu.classList.remove('visible');
+    });
 
     projectCancelButton.addEventListener('click', () => {
         newProjectMenu.classList.remove('visible');
-    })
+    });
 }
 
 export {addEventListeners}
