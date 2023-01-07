@@ -108,6 +108,7 @@ function addEventListeners() {
 
     projectCancelButton.addEventListener('click', () => {
         newProjectMenu.classList.remove('visible');
+        clearProjectInput();
     });
 }
 

@@ -152,8 +152,50 @@ function setTaskPriorityColor(taskPriority) {
 
 // **************** PROJECT SPECIFIC FUNCTIONS ****************
 
-function createProjectElement(project, projectId) {
+function createProjectElement(project) {
+    const projectList = document.querySelector('#project-tiles');
+    const newProjectButton = document.querySelector('.new-project-button');
+    
+    const li = document.createElement('li');
+    li.classList.add('nav-item');
+    li.dataset.projectId = project.getId();
 
+    const span = document.createElement('span');
+    span.classList.add('project-tile');
+    span.textContent = project.getName();
+
+    const img = document.createElement('img');
+    img.classList.add('vertical-menu');
+    img.dataset.projectId = project.getId();
+    img.src = '../src/images/vertical-menu.png';
+    img.alt = 'menu';
+
+    li.appendChild(span);
+    li.appendChild(img);
+
+    const editProjectMenu = createEditProjectMenu(project.getId());
+
+    projectList.insertBefore(li, newProjectButton);
+    projectList.insertBefore(editProjectMenu, newProjectButton);
+}
+
+function createEditProjectMenu(projectId) {
+    const div = document.createElement('div');
+    div.classList.add('edit-project-menu');
+    div.dataset.projectId = projectId;
+
+    const editButton = document.createElement('button');
+    editButton.classList.add('project-edit-btn', 'project-btn');
+    editButton.textContent = 'Edit';
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('project-delete-btn', 'project-btn');
+    deleteButton.textContent = 'Delete';
+
+    div.appendChild(editButton);
+    div.appendChild(deleteButton);
+
+    return div;
 }
 
 // ************************************************************
