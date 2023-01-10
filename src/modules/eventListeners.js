@@ -96,11 +96,15 @@ function addEventListeners() {
     const projectCancelButton = document.querySelector('#cancel-project-btn');
 
     newProjectButton.addEventListener('click', () => {
+        if(projectCreateButton.textContent === 'CONFIRM EDIT') {
+            projectCreateButton.textContent = 'CREATE PROJECT';
+        }
         newProjectMenu.classList.add('visible');
     });
 
     projectCreateButton.addEventListener('click', () => {
         if(document.querySelector('#new-project-name').value === '') return;
+        if(projectCreateButton.textContent === 'CONFIRM EDIT') return;
         processNewProjectInput();
         clearProjectInput();
         newProjectMenu.classList.remove('visible');

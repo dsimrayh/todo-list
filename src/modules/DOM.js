@@ -163,6 +163,7 @@ function createProjectElement(project) {
     const span = document.createElement('span');
     span.classList.add('project-tile');
     span.textContent = project.getName();
+    span.dataset.projectId = project.getId();
 
     const img = document.createElement('img');
     img.classList.add('vertical-menu');
@@ -187,10 +188,12 @@ function createEditProjectMenu(projectId) {
     const editButton = document.createElement('button');
     editButton.classList.add('project-edit-btn', 'project-btn');
     editButton.textContent = 'Edit';
+    editButton.dataset.projectId = projectId;
 
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('project-delete-btn', 'project-btn');
     deleteButton.textContent = 'Delete';
+    deleteButton.dataset.projectId = projectId;
 
     div.appendChild(editButton);
     div.appendChild(deleteButton);

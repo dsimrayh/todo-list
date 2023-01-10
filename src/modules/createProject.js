@@ -1,5 +1,6 @@
 import { masterTaskList } from './createTask';
 import { createProjectElement } from './DOM';
+import { editProject, deleteProject } from './editProject';
 
 // Array to hold all projects and their data
 let masterProjectList = [];
@@ -54,12 +55,21 @@ function createNewProject(projectName) {
     const newProject = Project(projectName);
     masterProjectList.push(newProject);
     createProjectElement(newProject);
+    addProjectEventListeners(projectName, newProject.getId());
 
+    projectIdCounter++;
+}
+
+function clearProjectInput() {
+    document.querySelector('#new-project-name').value = '';
+}
+
+function addProjectEventListeners(projectName, projectId) {
     // Allows the user to highlight the project once clicked
     // Also removes the 'active' styling from the previously selected tile
     // Also updates task list header
     const projectElement = document.querySelector(`
-        .nav-item[data-project-id="${newProject.getId()}"]
+        .nav-item[data-project-id="${projectId}"]
     `);
     projectElement.addEventListener('click', () => {
         const contentHeader = document.querySelector('#content-header');
@@ -72,22 +82,32 @@ function createNewProject(projectName) {
         
         projectElement.classList.add('active');
     })
+
     // Open project menu once vertical menu is clicked
     const projectMenuButton = document.querySelector(`
-        .vertical-menu[data-project-id="${newProject.getId()}"]
+        .vertical-menu[data-project-id="${projectId}"]
     `)
     const projectMenu = document.querySelector(`
-        .edit-project-menu[data-project-id="${newProject.getId()}"]
+        .edit-project-menu[data-project-id="${projectId}"]
     `);
     projectMenuButton.addEventListener('click', () => {
         projectMenu.classList.toggle('open');
     })
 
-    projectIdCounter++;
+    // Event listeners for edit and delete buttons
+    const editButton = document.querySelector(`
+        .project-edit-btn[data-project-id="${projectId}"]
+    `);
+    editButton.addEventListener('click', () => {
+        editProject(projectId);
+    });
+
+    const deleteButton = document.querySelector(`
+        .project-delete-btn[data-project-id="${projectId}"]
+    `);
+    deleteButton.addEventListener('click', () => {
+        deleteProject(projectId);
+    });
 }
 
-function clearProjectInput() {
-    document.querySelector('#new-project-name').value = '';
-}
-
-export {checkIfNoProjects, processNewProjectInput, clearProjectInput}
+export {masterProjectList, checkIfNoProjects, processNewProjectInput, clearProjectInput}
