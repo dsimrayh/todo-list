@@ -1,3 +1,4 @@
+import { masterProjectList } from "./createProject";
 import { checkIfNoTasks, masterTaskList, displayTask } from "./createTask";
 import { showNoTasks } from "./DOM";
 
@@ -82,7 +83,7 @@ function updateInputs(taskId) {
 }
 
 // Deletes the selected task - removes from DOM and master task list
-function deleteTask(taskId) {
+function deleteTask(taskId, selectedProjectId) {
     const isUserSure = confirm('Are you sure you want to delete this task?');
     if(isUserSure === false) return;
 
@@ -95,6 +96,12 @@ function deleteTask(taskId) {
     
     const taskToRemoveFromMasterList = masterTaskList.findIndex(task => task.getID() === taskId);
     masterTaskList.splice(taskToRemoveFromMasterList, 1);
+
+    if(selectedProjectId !== 0) {
+        const projectToRemoveTaskFrom = masterProjectList.find(project => project.getId() === selectedProjectId);
+        projectToRemoveTaskFrom.removeFromTaskList(taskId);
+        console.log(projectToRemoveTaskFrom.getTaskList());
+    }
 
     if(checkIfNoTasks() === true) {
         showNoTasks();

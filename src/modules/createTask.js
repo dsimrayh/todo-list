@@ -1,20 +1,22 @@
 import { createTaskElement } from "./DOM.js";
 import { deleteTask, editTask } from "./editTask.js";
+import { masterProjectList } from "./createProject.js";
 
 // Primary task list to store all tasks
 let masterTaskList = [];
 // Counter for task ID #s
-let taskIdCounter = 0;
+let taskIdCounter = 1;
 
 function checkIfNoTasks() {
     return masterTaskList.length === 0;
 }
 
 // Task factory function
-const Task = (name, description, dueDate, priority) => {
+const Task = (name, description, dueDate, priority, projectId) => {
     let _important = false;
     let _completed = false;
     let _id = null;
+    let _projectId = projectId;
 
     const isImportant = () => _important;
     const isCompleted = () => _completed;
@@ -22,6 +24,7 @@ const Task = (name, description, dueDate, priority) => {
     const toggleCompleted = () => _completed = !_completed;
     const setID = (value) => _id = value;
     const getID = () => _id;
+    const getProjectId = () => _projectId;
 
     return {
         name,
@@ -33,20 +36,21 @@ const Task = (name, description, dueDate, priority) => {
         isImportant,
         isCompleted,
         setID,
-        getID
+        getID,
+        getProjectId
     };
 }
 
 // Handles the input from the "Add task" modal
-function processNewTaskInput() {
+function processNewTaskInput(selectedProjectId) {
     const name = document.querySelector('#task-name-input').value;
     const description = document.querySelector('#task-desc-input').value;
     const dueDate = document.querySelector('#task-date-input').value;
     const priority = document.querySelector('#task-priority-input').value;
 
-    const newTask = Task(name, description, dueDate, priority);
+    const newTask = Task(name, description, dueDate, priority, selectedProjectId);
 
-    addNewTask(newTask);
+    addNewTask(newTask, selectedProjectId);
 
     clearTaskInput();
 
@@ -61,17 +65,23 @@ function clearTaskInput() {
 }
 
 // Creates a new task element and adds it to the task list
-function addNewTask(task) {
+function addNewTask(task, selectedProjectId) {
     removeNoTasksDiv();
     task.setID(taskIdCounter);
     createTaskElement(task, taskIdCounter);
-    masterTaskList.push(task)
+    masterTaskList.push(task);
     addTaskEventListeners(task, taskIdCounter);
     taskIdCounter++;
+
+    // If viewing a project and a task is created, push the task to the project's task list
+    if(selectedProjectId !== 0) {
+        const projectToAppendTaskTo = masterProjectList.find(project => project.getId() === selectedProjectId);
+        projectToAppendTaskTo.addToTaskList(task);
+    }
 }
 
 // Add event listeners to each of the buttons on a task element
-function addTaskEventListeners(task, taskID) {
+function addTaskEventListeners(task, taskID, selectedProjectId) {
     const description = document.querySelector(`.description[data-task-id="${taskID}"`);
     const expand = document.querySelector(`.expand[data-task-id="${taskID}"`);
     expand.addEventListener('click', () => {
@@ -115,7 +125,7 @@ function addTaskEventListeners(task, taskID) {
     const deleteButton = document.querySelector(`.delete[data-task-id="${taskID}"`);
     deleteButton.addEventListener('click', () => {
         if(task.isCompleted() === true) return;
-        deleteTask(taskID);
+        deleteTask(taskID, task.getProjectId());
     });
 
 }

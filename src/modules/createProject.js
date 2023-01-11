@@ -10,7 +10,7 @@ function checkIfNoProjects() {
 }
 
 // Variable to use for project ID numbers
-let projectIdCounter = 0;
+let projectIdCounter = 1;
 
 // Project factory function
 const Project = (name) => {
@@ -25,7 +25,10 @@ const Project = (name) => {
     const getTaskList = () => _taskList;
     const addToTaskList = (task) => _taskList.push(task);
     // Update
-    const removeFromTaskList = (task) => _taskList.splice(task, 1);
+    const removeFromTaskList = (taskId) => {
+        const taskToRemove = _taskList.findIndex(task => task.getID() === taskId);
+        _taskList.splice(taskToRemove, 1);
+    }
 
     return {
         _name,

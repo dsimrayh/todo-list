@@ -52,7 +52,12 @@ function addEventListeners() {
         const inputs = Array.from(document.querySelectorAll('.input'));
         if(inputs.some(input => input.value === '')) return;
 
-        processNewTaskInput();
+        // Check if we are currently viewing a project
+        let selectedProjectId = null;
+        const selectedTile = document.querySelector('.nav-item.active');
+        if(selectedTile.dataset.projectId !== undefined) selectedProjectId = +selectedTile.dataset.projectId;
+
+        processNewTaskInput(selectedProjectId);
         mask.classList.remove('display-grid');
     });
 
