@@ -29,6 +29,9 @@ function editProject(projectId) {
 }
 
 function deleteProject(projectId) {
+    const isUserSure = confirm('Are you sure you want to delete this project?');
+    if(isUserSure !== true) return;
+
     // Remove project elements from DOM
     const projectList = document.querySelector('#project-tiles');
 

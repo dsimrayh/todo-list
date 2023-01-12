@@ -1,5 +1,5 @@
-import { masterTaskList } from './createTask';
-import { createProjectElement } from './DOM';
+import { displayTask } from './createTask';
+import { createProjectElement, clearTasks, showNoTasks } from './DOM';
 import { editProject, deleteProject } from './editProject';
 
 // Array to hold all projects and their data
@@ -84,8 +84,19 @@ function addProjectEventListeners(projectName, projectId) {
         })
         
         projectElement.classList.add('active');
-    })
 
+        const selectedProject = masterProjectList.find(project => project.getId() === projectId);
+        const taskList = selectedProject.getTaskList();
+        clearTasks();
+        showNoTasks();
+        taskList.forEach(task => {
+            displayTask(task, task.getID());
+            if(task.isImportant() === true) {
+                document.querySelector(`.important[data-task-id="${task.getID()}"`)
+                .src = '../src/images/important-filled.png';
+            }
+        });
+    });
     // Open project menu once vertical menu is clicked
     const projectMenuButton = document.querySelector(`
         .vertical-menu[data-project-id="${projectId}"]

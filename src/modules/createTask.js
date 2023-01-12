@@ -74,14 +74,14 @@ function addNewTask(task, selectedProjectId) {
     taskIdCounter++;
 
     // If viewing a project and a task is created, push the task to the project's task list
-    if(selectedProjectId !== 0) {
+    if(selectedProjectId !== 0 && selectedProjectId !== null && selectedProjectId !== undefined) {
         const projectToAppendTaskTo = masterProjectList.find(project => project.getId() === selectedProjectId);
         projectToAppendTaskTo.addToTaskList(task);
     }
 }
 
 // Add event listeners to each of the buttons on a task element
-function addTaskEventListeners(task, taskID, selectedProjectId) {
+function addTaskEventListeners(task, taskID) {
     const description = document.querySelector(`.description[data-task-id="${taskID}"`);
     const expand = document.querySelector(`.expand[data-task-id="${taskID}"`);
     expand.addEventListener('click', () => {
@@ -142,9 +142,16 @@ function clearCompletedTasks() {
                 document.querySelector(`.description[data-task-id="${task.dataset.taskId}"]`)
                 );
 
-            const taskToRemoveFromMasterList = masterTaskList.findIndex(task => task.getID() === taskId);
+            const taskToRemoveFromMasterList = masterTaskList.find(task => task.getID() === taskId);
+            const projectId = taskToRemoveFromMasterList.getProjectId();
+            if(projectId !== null) {
+                const project = masterProjectList.find(project => project.getId() === projectId);
+                project.removeFromTaskList(taskId);
+            }
+
+            const indexOfTaskToRemoveFromMasterList = masterTaskList.findIndex(task => task.getID() === taskId);
             
-            masterTaskList.splice(taskToRemoveFromMasterList, 1);
+            masterTaskList.splice(indexOfTaskToRemoveFromMasterList, 1);
         } 
     });
 }
@@ -162,6 +169,14 @@ function displayTask(task, taskId) {
     removeNoTasksDiv();
     createTaskElement(task, taskId);
     addTaskEventListeners(task, taskId);
+
+    if(task.isCompleted() === true) {
+        document.querySelector(`.task[data-task-id="${taskId}"]`)
+        .classList.add('completed');
+
+        document.querySelector(`.task-complete-button[data-task-id="${taskId}"]`)
+        .classList.add('checked');
+    }
 }
 
 export {processNewTaskInput, clearTaskInput, checkIfNoTasks, clearCompletedTasks, masterTaskList, displayTask}

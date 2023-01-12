@@ -97,10 +97,9 @@ function deleteTask(taskId, selectedProjectId) {
     const taskToRemoveFromMasterList = masterTaskList.findIndex(task => task.getID() === taskId);
     masterTaskList.splice(taskToRemoveFromMasterList, 1);
 
-    if(selectedProjectId !== 0) {
+    if(selectedProjectId !== 0 && selectedProjectId !== null && selectedProjectId !== undefined) {
         const projectToRemoveTaskFrom = masterProjectList.find(project => project.getId() === selectedProjectId);
         projectToRemoveTaskFrom.removeFromTaskList(taskId);
-        console.log(projectToRemoveTaskFrom.getTaskList());
     }
 
     if(checkIfNoTasks() === true) {

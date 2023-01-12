@@ -27,12 +27,13 @@ function addEventListeners() {
         navbar.classList.toggle('navbar-hidden');
     });
 
-    // Navbar list items - highlight on click
-    const navbarItems = document.querySelectorAll('.nav-item');
+    // Home section tiles - highlight on click
+    const homeTiles = document.querySelectorAll('.nav-item');
 
-    navbarItems.forEach(item => {
+    homeTiles.forEach(item => {
         item.addEventListener('click', () => {
-            navbarItems.forEach(navbarItem => {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(navbarItem => {
                 navbarItem.classList.remove('active');
             })
             item.classList.add('active');
