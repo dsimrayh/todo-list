@@ -1,4 +1,6 @@
 import { masterProjectList } from "./createProject";
+import updateProjectsInStorage from "../utils/updateProjectsInStorage";
+import storageAvailable from "../utils/storageAvailable";
 
 function editProject(projectId) {
     const newProjectMenu = document.querySelector('.new-project-menu');
@@ -17,13 +19,21 @@ function editProject(projectId) {
 
         const projectToEdit = masterProjectList.find(project => project.getId() === projectId);
         projectToEdit.setName(newProjectName);
+
+        if(storageAvailable('localStorage')) {
+            updateProjectsInStorage(masterProjectList);
+        }
         
         const projectElement = document.querySelector(`
             .project-tile[data-project-id="${projectId}"]
         `);
         projectElement.textContent = newProjectName;
 
+        const contentHeader = document.querySelector('#content-header');
+        contentHeader.textContent = projectToEdit.getName();
+
         newProjectMenu.classList.remove('visible');
+        document.querySelector('#new-project-name').value = '';
 
     }, {'once': true});
 }

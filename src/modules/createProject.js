@@ -1,6 +1,8 @@
 import { displayTask } from './createTask';
 import { createProjectElement, clearTasks, showNoTasks } from './DOM';
 import { editProject, deleteProject } from './editProject';
+import updateProjectsInStorage from '../utils/updateProjectsInStorage';
+import storageAvailable from '../utils/storageAvailable';
 
 // Array to hold all projects and their data
 let masterProjectList = [];
@@ -58,9 +60,13 @@ function createNewProject(projectName) {
     const newProject = Project(projectName);
     masterProjectList.push(newProject);
     createProjectElement(newProject);
-    addProjectEventListeners(projectName, newProject.getId());
+    addProjectEventListeners(newProject.getName(), newProject.getId());
 
     projectIdCounter++;
+
+    if(storageAvailable('localStorage')) {
+        updateProjectsInStorage(masterProjectList);
+    }
 }
 
 function clearProjectInput() {
@@ -75,9 +81,6 @@ function addProjectEventListeners(projectName, projectId) {
         .nav-item[data-project-id="${projectId}"]
     `);
     projectElement.addEventListener('click', () => {
-        const contentHeader = document.querySelector('#content-header');
-        contentHeader.textContent = projectName;
-
         const navbarItems = document.querySelectorAll('.nav-item');
         navbarItems.forEach(navbarItem => {
             navbarItem.classList.remove('active');
@@ -86,6 +89,8 @@ function addProjectEventListeners(projectName, projectId) {
         projectElement.classList.add('active');
 
         const selectedProject = masterProjectList.find(project => project.getId() === projectId);
+        const contentHeader = document.querySelector('#content-header');
+        contentHeader.textContent = selectedProject.getName();
         const taskList = selectedProject.getTaskList();
         clearTasks();
         showNoTasks();
@@ -121,6 +126,9 @@ function addProjectEventListeners(projectName, projectId) {
     `);
     deleteButton.addEventListener('click', () => {
         deleteProject(projectId);
+        if(storageAvailable('localStorage')) {
+            updateProjectsInStorage(masterProjectList);
+        }
     });
 }
 

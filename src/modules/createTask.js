@@ -1,6 +1,9 @@
 import { createTaskElement } from "./DOM.js";
 import { deleteTask, editTask } from "./editTask.js";
 import { masterProjectList } from "./createProject.js";
+import updateTasksInStorage from "../utils/updateTasksInStorage.js";
+import updateProjectsInStorage from "../utils/updateProjectsInStorage.js";
+import storageAvailable from '../utils/storageAvailable.js';
 
 // Primary task list to store all tasks
 let masterTaskList = [];
@@ -78,6 +81,11 @@ function addNewTask(task, selectedProjectId) {
         const projectToAppendTaskTo = masterProjectList.find(project => project.getId() === selectedProjectId);
         projectToAppendTaskTo.addToTaskList(task);
     }
+
+    if(storageAvailable('localStorage')) {
+        updateTasksInStorage(masterTaskList);
+        updateProjectsInStorage(masterProjectList);
+    }
 }
 
 // Add event listeners to each of the buttons on a task element
@@ -100,6 +108,11 @@ function addTaskEventListeners(task, taskID) {
         }
         taskCompleteButton.classList.toggle('checked');
         taskElement.classList.toggle('completed');
+
+        if(storageAvailable('localStorage')) {
+            updateTasksInStorage(masterTaskList);
+            updateProjectsInStorage(masterProjectList)
+        }
     });
     
     const importantButton = document.querySelector(`.important[data-task-id="${taskID}"`);
@@ -114,6 +127,11 @@ function addTaskEventListeners(task, taskID) {
             importantButton.src = '../src/images/important.png';
             task.toggleImportant();
         }
+
+        if(storageAvailable('localStorage')) {
+            updateTasksInStorage(masterTaskList);
+            updateProjectsInStorage(masterProjectList)
+        }
     });
 
     const editButton = document.querySelector(`.edit[data-task-id="${taskID}"`);
@@ -126,6 +144,11 @@ function addTaskEventListeners(task, taskID) {
     deleteButton.addEventListener('click', () => {
         if(task.isCompleted() === true) return;
         deleteTask(taskID, task.getProjectId());
+
+        if(storageAvailable('localStorage')) {
+            updateTasksInStorage(masterTaskList);
+            updateProjectsInStorage(masterProjectList)
+        }
     });
 
 }
@@ -154,6 +177,11 @@ function clearCompletedTasks() {
             masterTaskList.splice(indexOfTaskToRemoveFromMasterList, 1);
         } 
     });
+
+    if(storageAvailable('localStorage')) {
+        updateTasksInStorage(masterTaskList);
+        updateProjectsInStorage(masterProjectList)
+    }
 }
 
 // Remove the div that displays "No tasks remaining"

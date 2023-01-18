@@ -1,8 +1,24 @@
-import {addEventListeners} from './modules/eventListeners.js'
+import {addEventListeners} from './modules/eventListeners.js';
 import { handleHomeTileClick } from './modules/home.js';
-import {clearCompletedTasks} from './modules/createTask';
+import {clearCompletedTasks, masterTaskList} from './modules/createTask';
+import { masterProjectList } from './modules/createProject.js';
 import {showNoTasks} from './modules/DOM.js';
 import { checkIfNoTasks } from './modules/createTask.js';
+import storageAvailable from './utils/storageAvailable.js';
+
+//if(storageAvailable('localStorage')) {
+//    if(!localStorage.getItem('masterTaskList')) {
+//        localStorage.setItem('masterTaskList', JSON.stringify(masterTaskList));
+//    } else {
+//        masterTaskList = JSON.parse(localStorage.getItem('masterTaskList'));
+//    }
+//
+//    if(!localStorage.getItem('masterProjectList')) {
+//        localStorage.setItem('masterProjectList', JSON.stringify(masterProjectList));
+//    } else {
+//        masterProjectList = JSON.parse(localStorage.getItem('masterProjectList'));
+//    }
+//}
 
 addEventListeners();
 showNoTasks();
@@ -22,4 +38,7 @@ clearTasksBtn.addEventListener('click', () => {
         showNoTasks();
     }
 });
-              
+
+
+            
+

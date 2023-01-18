@@ -1,6 +1,8 @@
 import { masterProjectList } from "./createProject";
 import { checkIfNoTasks, masterTaskList, displayTask } from "./createTask";
 import { showNoTasks } from "./DOM";
+import updateTasksInStorage from "../utils/updateTasksInStorage";
+import storageAvailable from "../utils/storageAvailable";
 
 // Pull up edit mode
 function editTask(taskId) {
@@ -23,6 +25,11 @@ function editTask(taskId) {
         if(inputs.some(input => input.value === '')) return;
 
         confirmEdits(taskId)
+
+        if(storageAvailable('localStorage')) {
+            updateTasksInStorage(masterTaskList);
+            updateProjectsInStorage(masterProjectList)
+        }
 
         const addTaskButton = document.querySelector('.add-task-modal-button');
         const editTaskButton = document.querySelector('.edit-task-modal-button');
