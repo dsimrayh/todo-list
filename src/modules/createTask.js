@@ -207,4 +207,27 @@ function displayTask(task, taskId) {
     }
 }
 
-export {processNewTaskInput, clearTaskInput, checkIfNoTasks, clearCompletedTasks, masterTaskList, displayTask}
+function processLocalStorageTasks(localStorageTaskList) {
+    const parsedTaskList = JSON.parse(localStorageTaskList);
+    parsedTaskList.forEach(task => {
+        removeNoTasksDiv();
+        const taskObject = Task(task.name, task.description, task.dueDate, task.priority, task.projectId);
+        taskObject.setID(taskIdCounter);
+
+        if(task.important === true) taskObject.toggleImportant();
+        if(task.completed === true) taskObject.toggleCompleted();
+
+        createTaskElement(taskObject, taskIdCounter);
+        masterTaskList.push(taskObject);
+        addTaskEventListeners(taskObject, taskIdCounter);
+        taskIdCounter++;
+
+        if(taskObject.getProjectId() !== 0 && taskObject.getProjectId() !== null && taskObject.getProjectId() !== undefined) {
+            const projectToAppendTaskTo = masterProjectList.find(project => project.getId() === taskObject.getProjectId());
+            projectToAppendTaskTo.addToTaskList(taskObject);
+        }
+    })
+    
+}
+
+export {processNewTaskInput, clearTaskInput, checkIfNoTasks, clearCompletedTasks, masterTaskList, displayTask, processLocalStorageTasks}

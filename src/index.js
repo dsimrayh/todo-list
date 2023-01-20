@@ -1,27 +1,20 @@
 import {addEventListeners} from './modules/eventListeners.js';
 import { handleHomeTileClick } from './modules/home.js';
-import {clearCompletedTasks, masterTaskList} from './modules/createTask';
-import { masterProjectList } from './modules/createProject.js';
+import {clearCompletedTasks} from './modules/createTask.js';
 import {showNoTasks} from './modules/DOM.js';
-import { checkIfNoTasks } from './modules/createTask.js';
+import { checkIfNoTasks, processLocalStorageTasks } from './modules/createTask.js';
+import { processLocalStorageProjects } from './modules/createProject.js';
 import storageAvailable from './utils/storageAvailable.js';
-
-//if(storageAvailable('localStorage')) {
-//    if(!localStorage.getItem('masterTaskList')) {
-//        localStorage.setItem('masterTaskList', JSON.stringify(masterTaskList));
-//    } else {
-//        masterTaskList = JSON.parse(localStorage.getItem('masterTaskList'));
-//    }
-//
-//    if(!localStorage.getItem('masterProjectList')) {
-//        localStorage.setItem('masterProjectList', JSON.stringify(masterProjectList));
-//    } else {
-//        masterProjectList = JSON.parse(localStorage.getItem('masterProjectList'));
-//    }
-//}
 
 addEventListeners();
 showNoTasks();
+
+if(storageAvailable('localStorage')) {
+    if(localStorage.getItem('masterTaskList') && localStorage.getItem('masterProjectList')) {
+        processLocalStorageProjects(localStorage.getItem('masterProjectList'));
+        processLocalStorageTasks(localStorage.getItem('masterTaskList'));
+    } 
+}
 
 const homeTiles = document.querySelectorAll('.home-tile');
 homeTiles.forEach(tile => {
@@ -38,7 +31,3 @@ clearTasksBtn.addEventListener('click', () => {
         showNoTasks();
     }
 });
-
-
-            
-

@@ -11,7 +11,8 @@ export default function updateTasksInStorage(masterTaskList) {
             'dueDate': task.dueDate,
             'priority': task.priority,
             'important': task.isImportant(),
-            'completed': task.isCompleted()
+            'completed': task.isCompleted(),
+            'projectId': task.getProjectId(),
         };
         localStorageTaskList.push(formattedTask); 
     });

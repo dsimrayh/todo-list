@@ -52,10 +52,11 @@ function createTaskElement(task, taskID) {
 
     const li = document.createElement('li');
     li.classList.add('task', 'no-user-select');
+    if(task.isCompleted() === true) li.classList.add('completed');
     li.dataset.taskId = taskID;
 
-    const leftDiv = createLeftSide(name, taskID);
-    const rightDiv = createRightSide(dueDateFormatted, taskID);
+    const leftDiv = createLeftSide(task, name, taskID);
+    const rightDiv = createRightSide(task, dueDateFormatted, taskID);
     li.appendChild(leftDiv);
     li.appendChild(rightDiv);
 
@@ -67,7 +68,7 @@ function createTaskElement(task, taskID) {
     li.style.borderColor = setTaskPriorityColor(priority);
 }
 
-function createLeftSide(taskName, taskID) {
+function createLeftSide(task, taskName, taskID) {
     const div = document.createElement('div');
     div.classList.add('left');
 
@@ -79,6 +80,7 @@ function createLeftSide(taskName, taskID) {
 
     const taskCompleteButton = document.createElement('div');
     taskCompleteButton.classList.add('task-complete-button');
+    if(task.isCompleted() === true) taskCompleteButton.classList.add('checked');
     taskCompleteButton.dataset.taskId = taskID;
 
     const span = document.createElement('span');
@@ -91,7 +93,7 @@ function createLeftSide(taskName, taskID) {
     return div;
 }
 
-function createRightSide(taskDueDate, taskID) {
+function createRightSide(task, taskDueDate, taskID) {
     const div = document.createElement('div');
     div.classList.add('right');
 
@@ -104,7 +106,11 @@ function createRightSide(taskDueDate, taskID) {
 
     const importantBtn = document.createElement('img');
     importantBtn.classList.add('task-button', 'important'); 
-    importantBtn.src = '../src/images/important.png';
+    if(task.isImportant() === true) {
+        importantBtn.src = '../src/images/important-filled.png';
+    } else {
+        importantBtn.src = '../src/images/important.png';
+    }
     importantBtn.alt = 'important';
     importantBtn.dataset.taskId = taskID;
 

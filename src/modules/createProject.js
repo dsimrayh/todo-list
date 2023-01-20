@@ -132,4 +132,15 @@ function addProjectEventListeners(projectName, projectId) {
     });
 }
 
-export {masterProjectList, checkIfNoProjects, processNewProjectInput, clearProjectInput}
+function processLocalStorageProjects(localStorageProjectList) {
+    const parsedProjectList = JSON.parse(localStorageProjectList);
+    parsedProjectList.forEach(project => {
+        const projectObject = Project(project.name);
+        masterProjectList.push(projectObject);
+        createProjectElement(projectObject);
+        addProjectEventListeners(projectObject.getName(), projectObject.getId());
+        projectIdCounter++;
+    })
+}
+
+export {masterProjectList, checkIfNoProjects, processNewProjectInput, clearProjectInput, processLocalStorageProjects}
