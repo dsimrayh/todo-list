@@ -1,3 +1,4 @@
+// function to check if storage is available (either local or session)
 export default function storageAvailable(type) {
     let storage;
     try {

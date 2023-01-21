@@ -1,8 +1,8 @@
-import { masterProjectList } from "./createProject";
-import { checkIfNoTasks, masterTaskList, displayTask } from "./createTask";
-import { showNoTasks } from "./DOM";
-import updateTasksInStorage from "../utils/updateTasksInStorage";
-import storageAvailable from "../utils/storageAvailable";
+import { masterProjectList } from "./createProject.js";
+import { checkIfNoTasks, masterTaskList, displayTask } from "./createTask.js";
+import { showNoTasks } from "./DOM.js";
+import updateTasksInStorage from "../utils/updateTasksInStorage.js";
+import storageAvailable from "../utils/storageAvailable.js";
 
 // Pull up edit mode
 function editTask(taskId) {
@@ -20,6 +20,9 @@ function editTask(taskId) {
     updateInputs(taskId);
 
 
+    // Adds a one time event listener to the "confirm edits" button.
+    // Slightly hacky workaround due to using the same button for both Add Task and Confirm Edits.
+    // (need separate event listeners based off what the user is trying to do - add or edit)
     editTaskButton.addEventListener('click', () => {
         const inputs = Array.from(document.querySelectorAll('.input'));
         if(inputs.some(input => input.value === '')) return;
@@ -104,6 +107,7 @@ function deleteTask(taskId, selectedProjectId) {
     const taskToRemoveFromMasterList = masterTaskList.findIndex(task => task.getID() === taskId);
     masterTaskList.splice(taskToRemoveFromMasterList, 1);
 
+    // If a task is part of a project, also remove the task from that project's task list
     if(selectedProjectId !== 0 && selectedProjectId !== null && selectedProjectId !== undefined) {
         const projectToRemoveTaskFrom = masterProjectList.find(project => project.getId() === selectedProjectId);
         projectToRemoveTaskFrom.removeFromTaskList(taskId);

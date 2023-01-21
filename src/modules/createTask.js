@@ -207,6 +207,7 @@ function displayTask(task, taskId) {
     }
 }
 
+// Processes task data from localStorage and creates + displays the task elements in the DOM
 function processLocalStorageTasks(localStorageTaskList) {
     const parsedTaskList = JSON.parse(localStorageTaskList);
     parsedTaskList.forEach(task => {
@@ -222,6 +223,7 @@ function processLocalStorageTasks(localStorageTaskList) {
         addTaskEventListeners(taskObject, taskIdCounter);
         taskIdCounter++;
 
+        // If task has a project ID, add it to that project's task list
         if(taskObject.getProjectId() !== 0 && taskObject.getProjectId() !== null && taskObject.getProjectId() !== undefined) {
             const projectToAppendTaskTo = masterProjectList.find(project => project.getId() === taskObject.getProjectId());
             projectToAppendTaskTo.addToTaskList(taskObject);

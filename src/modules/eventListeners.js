@@ -102,6 +102,7 @@ function addEventListeners() {
     const projectCancelButton = document.querySelector('#cancel-project-btn');
 
     newProjectButton.addEventListener('click', () => {
+        // Reset button text if user edited last
         if(projectCreateButton.textContent === 'CONFIRM EDIT') {
             projectCreateButton.textContent = 'CREATE PROJECT';
         }
@@ -110,6 +111,7 @@ function addEventListeners() {
 
     projectCreateButton.addEventListener('click', () => {
         if(document.querySelector('#new-project-name').value === '') return;
+        // return out of this function if in edit mode
         if(projectCreateButton.textContent === 'CONFIRM EDIT') return;
         processNewProjectInput();
         clearProjectInput();
@@ -123,49 +125,3 @@ function addEventListeners() {
 }
 
 export {addEventListeners}
-
-
-// ============== DEPRECATED =================
-
-  //  // Important button / fill on click
-  //  const importantButtons = document.querySelectorAll('.important')
-//
-  //  importantButtons.forEach(button => {
-  //      let selected = false;
-  //      button.addEventListener('click', () => {
-  //          selected = !selected;
-  //          if(selected) {
-  //              button.src = "../src/images/important-filled.png"
-  //          } else {
-  //              button.src = "../src/images/important.png"
-  //          }
-  //      })
-  //          
-  //  });
-
-
-
-//
-  // // Open task description
-  // const openDescriptionButtons = document.querySelectorAll('.expand');
-  // const descriptions = document.querySelectorAll('.description');
-//
-  // openDescriptionButtons.forEach(button => {
-  //     button.addEventListener('click', (e) => {
-  //         const id = +e.target.dataset.descriptionId;
-  //         const description = descriptions[id - 1];
-  //         button.classList.toggle('open');
-  //         description.classList.toggle('open');
-  //     });
-  // })
-//
-
-
- //   // Task complete button - green checkmark on click
- //   const taskCompleteButtons = document.querySelectorAll('.task-complete-button');
-//
- //   taskCompleteButtons.forEach(button => {
- //       button.addEventListener('click', () => {
- //           button.classList.toggle('checked');
- //       })
- //   });

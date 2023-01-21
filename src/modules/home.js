@@ -1,5 +1,5 @@
 import { updateHeader, clearTasks, showNoTasks } from './DOM.js';
-import { masterTaskList, displayTask } from './createTask';
+import { masterTaskList, displayTask } from './createTask.js';
 import { isToday, addHours, getWeek } from 'date-fns';
 
 function handleHomeTileClick(homeTile) {

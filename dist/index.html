@@ -19,10 +19,10 @@
                 <div class="add-task-modal-title">CREATE NEW TASK</div>
 
                 <div class="add-task-input-group">
-                    <label for="task-name-input">TASK NAME</label>
-                    <input class="input add-task-text-input input-color" id="task-name-input" type="text" name="task-name-input" placeholder="Example">
-                    <label for="task-desc-input">TASK DESCRIPTION</label>
-                    <input class="input add-task-text-input input-color" id="task-desc-input" type="text" name="task-desc-input" placeholder="Do something">
+                    <label for="task-name-input">TASK NAME <span class="char-limit"> (60 characters max) </span></label>
+                    <input class="input add-task-text-input input-color" id="task-name-input" type="text" name="task-name-input" placeholder="Example" maxlength="60">
+                    <label for="task-desc-input">TASK DESCRIPTION <span class="char-limit"> (120 characters max) </span></label>
+                    <input class="input add-task-text-input input-color" id="task-desc-input" type="text" name="task-desc-input" placeholder="Do something" maxlength="120">
 
                     <div class="date-priority-group">
                         <div class="date-priority-labels">

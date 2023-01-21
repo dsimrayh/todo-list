@@ -1,7 +1,7 @@
-import {addEventListeners} from './modules/eventListeners.js';
+import { addEventListeners } from './modules/eventListeners.js';
 import { handleHomeTileClick } from './modules/home.js';
-import {clearCompletedTasks} from './modules/createTask.js';
-import {showNoTasks} from './modules/DOM.js';
+import { clearCompletedTasks } from './modules/createTask.js';
+import { showNoTasks } from './modules/DOM.js';
 import { checkIfNoTasks, processLocalStorageTasks } from './modules/createTask.js';
 import { processLocalStorageProjects } from './modules/createProject.js';
 import storageAvailable from './utils/storageAvailable.js';

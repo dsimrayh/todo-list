@@ -1,6 +1,6 @@
-import { masterProjectList } from "./createProject";
-import updateProjectsInStorage from "../utils/updateProjectsInStorage";
-import storageAvailable from "../utils/storageAvailable";
+import { masterProjectList } from "./createProject.js";
+import updateProjectsInStorage from "../utils/updateProjectsInStorage.js";
+import storageAvailable from "../utils/storageAvailable.js";
 
 function editProject(projectId) {
     const newProjectMenu = document.querySelector('.new-project-menu');

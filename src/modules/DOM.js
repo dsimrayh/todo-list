@@ -45,6 +45,7 @@ function updateHeader(homeTile) {
 
 // **************** TASK SPECIFIC FUNCTIONS ****************
 
+// Generates the <li> element to display the task data
 function createTaskElement(task, taskID) {
     const taskListDOM = document.querySelector('#task-list');
     const {name, description, dueDate, priority} = task;
@@ -68,6 +69,7 @@ function createTaskElement(task, taskID) {
     li.style.borderColor = setTaskPriorityColor(priority);
 }
 
+// Generates the content for the left side of the <li> element
 function createLeftSide(task, taskName, taskID) {
     const div = document.createElement('div');
     div.classList.add('left');
@@ -93,6 +95,7 @@ function createLeftSide(task, taskName, taskID) {
     return div;
 }
 
+// Generates the content for the right side of the <li> element
 function createRightSide(task, taskDueDate, taskID) {
     const div = document.createElement('div');
     div.classList.add('right');
@@ -158,6 +161,7 @@ function setTaskPriorityColor(taskPriority) {
 
 // **************** PROJECT SPECIFIC FUNCTIONS ****************
 
+// Generates the <li> element to display the project data
 function createProjectElement(project) {
     const projectList = document.querySelector('#project-tiles');
     const newProjectButton = document.querySelector('.new-project-button');
@@ -186,6 +190,7 @@ function createProjectElement(project) {
     projectList.insertBefore(editProjectMenu, newProjectButton);
 }
 
+// Generates the edit / delete menu associated with each project
 function createEditProjectMenu(projectId) {
     const div = document.createElement('div');
     div.classList.add('edit-project-menu');

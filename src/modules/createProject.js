@@ -1,8 +1,8 @@
-import { displayTask } from './createTask';
-import { createProjectElement, clearTasks, showNoTasks } from './DOM';
-import { editProject, deleteProject } from './editProject';
-import updateProjectsInStorage from '../utils/updateProjectsInStorage';
-import storageAvailable from '../utils/storageAvailable';
+import { displayTask } from './createTask.js';
+import { createProjectElement, clearTasks, showNoTasks } from './DOM.js';
+import { editProject, deleteProject } from './editProject.js';
+import updateProjectsInStorage from '../utils/updateProjectsInStorage.js';
+import storageAvailable from '../utils/storageAvailable.js';
 
 // Array to hold all projects and their data
 let masterProjectList = [];
@@ -60,7 +60,7 @@ function createNewProject(projectName) {
     const newProject = Project(projectName);
     masterProjectList.push(newProject);
     createProjectElement(newProject);
-    addProjectEventListeners(newProject.getName(), newProject.getId());
+    addProjectEventListeners(newProject.getId());
 
     projectIdCounter++;
 
@@ -73,7 +73,7 @@ function clearProjectInput() {
     document.querySelector('#new-project-name').value = '';
 }
 
-function addProjectEventListeners(projectName, projectId) {
+function addProjectEventListeners(projectId) {
     // Allows the user to highlight the project once clicked
     // Also removes the 'active' styling from the previously selected tile
     // Also updates task list header
@@ -88,6 +88,7 @@ function addProjectEventListeners(projectName, projectId) {
         
         projectElement.classList.add('active');
 
+        // Handles displaying projects and their respective tasks
         const selectedProject = masterProjectList.find(project => project.getId() === projectId);
         const contentHeader = document.querySelector('#content-header');
         contentHeader.textContent = selectedProject.getName();
@@ -132,6 +133,7 @@ function addProjectEventListeners(projectName, projectId) {
     });
 }
 
+// Processes aproject data from localStorage and creates + displays the projects in the DOM
 function processLocalStorageProjects(localStorageProjectList) {
     const parsedProjectList = JSON.parse(localStorageProjectList);
     parsedProjectList.forEach(project => {
